@@ -1,0 +1,2 @@
+hellow( if the project make problem with SQL file ), you asked from us submit the project without packages and without bin and obj dirctories . 
+we submitted without this dirctories but because there are not packages, so you need to remove the bin dirctory  from KanbanUI after the first runing and the project will working. you can see in the ripository that the project working good, and this problem only because that to create SQL file, its need the packages.. 
