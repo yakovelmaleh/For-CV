@@ -1,0 +1,94 @@
+<changelist name="Uncommitted_changes_before_Update_at_15_06_2021_00_15_[Default_Changelist]" date="1623705349473" recycled="false" toDelete="true">
+  <option name="PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_15_06_2021_00_15_[Default_Changelist]/shelved.patch" />
+  <option name="DESCRIPTION" value="Uncommitted changes before Update at 15/06/2021 00:15 [Default Changelist]" />
+  <binary>
+    <option name="BEFORE_PATH" value="out/production/dev/Business/Transportation/Transportation.class" />
+    <option name="AFTER_PATH" value="out/production/dev/Business/Transportation/Transportation.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_15_06_2021_00_15_[Default_Changelist]/Transportation.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="out/production/dev/Business/Transportation/TransportationService.class" />
+    <option name="AFTER_PATH" value="out/production/dev/Business/Transportation/TransportationService.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_15_06_2021_00_15_[Default_Changelist]/TransportationService.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="out/production/dev/Business/StockBusiness/StoreController.class" />
+    <option name="AFTER_PATH" value="out/production/dev/Business/StockBusiness/StoreController.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_15_06_2021_00_15_[Default_Changelist]/StoreController.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="out/production/dev/Presentation/Menu/SuppliersMenu.class" />
+    <option name="AFTER_PATH" value="out/production/dev/Presentation/Menu/SuppliersMenu.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_15_06_2021_00_15_[Default_Changelist]/SuppliersMenu.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="out/production/dev/DataAccess/TransportationMapper.class" />
+    <option name="AFTER_PATH" value="out/production/dev/DataAccess/TransportationMapper.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_15_06_2021_00_15_[Default_Changelist]/TransportationMapper.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="out/production/dev/Business/SupplierBusiness/SupplierController.class" />
+    <option name="AFTER_PATH" value="out/production/dev/Business/SupplierBusiness/SupplierController.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_15_06_2021_00_15_[Default_Changelist]/SupplierController.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="out/production/dev/Presentation/TransportationController.class" />
+    <option name="AFTER_PATH" value="out/production/dev/Presentation/TransportationController.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_15_06_2021_00_15_[Default_Changelist]/TransportationController.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="out/production/dev/Business/Transportation/DataControl.class" />
+    <option name="AFTER_PATH" value="out/production/dev/Business/Transportation/DataControl.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_15_06_2021_00_15_[Default_Changelist]/DataControl.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="out/production/dev/Business/SupplierBusiness/SupplierCard.class" />
+    <option name="AFTER_PATH" value="out/production/dev/Business/SupplierBusiness/SupplierCard.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_15_06_2021_00_15_[Default_Changelist]/SupplierCard.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="out/production/dev/Presentation/Controllers.class" />
+    <option name="AFTER_PATH" value="out/production/dev/Presentation/Controllers.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_15_06_2021_00_15_[Default_Changelist]/Controllers.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="out/production/dev/DataAccess/DalSuppliers/DalOrder.class" />
+    <option name="AFTER_PATH" value="out/production/dev/DataAccess/DalSuppliers/DalOrder.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_15_06_2021_00_15_[Default_Changelist]/DalOrder.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="out/production/dev/Presentation/Menu/TransportationMenu.class" />
+    <option name="AFTER_PATH" value="out/production/dev/Presentation/Menu/TransportationMenu.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_15_06_2021_00_15_[Default_Changelist]/TransportationMenu.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="out/production/dev/Presentation/StockCLI.class" />
+    <option name="AFTER_PATH" value="out/production/dev/Presentation/StockCLI.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_15_06_2021_00_15_[Default_Changelist]/StockCLI.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="out/production/dev/Presentation/Menu/OrdersMenu.class" />
+    <option name="AFTER_PATH" value="out/production/dev/Presentation/Menu/OrdersMenu.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_15_06_2021_00_15_[Default_Changelist]/OrdersMenu.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="out/production/dev/Business/SupplierBusiness/facade/SupplierService.class" />
+    <option name="AFTER_PATH" value="out/production/dev/Business/SupplierBusiness/facade/SupplierService.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_15_06_2021_00_15_[Default_Changelist]/SupplierService.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="database.db" />
+    <option name="AFTER_PATH" value="database.db" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_15_06_2021_00_15_[Default_Changelist]/database.db" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="out/production/dev/Business/SupplierBusiness/Order.class" />
+    <option name="AFTER_PATH" value="out/production/dev/Business/SupplierBusiness/Order.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_15_06_2021_00_15_[Default_Changelist]/Order.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="out/production/dev/Business/StockBusiness/Fcade/StorageService.class" />
+    <option name="AFTER_PATH" value="out/production/dev/Business/StockBusiness/Fcade/StorageService.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_15_06_2021_00_15_[Default_Changelist]/StorageService.class" />
+  </binary>
+</changelist>

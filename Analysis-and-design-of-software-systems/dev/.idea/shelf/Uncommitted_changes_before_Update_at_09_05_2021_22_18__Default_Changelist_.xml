@@ -1,0 +1,19 @@
+<changelist name="Uncommitted_changes_before_Update_at_09_05_2021_22_18_[Default_Changelist]" date="1620587881929" recycled="false" toDelete="true">
+  <option name="PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_09_05_2021_22_18_[Default_Changelist]/shelved.patch" />
+  <option name="DESCRIPTION" value="Uncommitted changes before Update at 09/05/2021 22:18 [Default Changelist]" />
+  <binary>
+    <option name="BEFORE_PATH" value="out/production/dev/DAL/DalStock/DALStoreController.class" />
+    <option name="AFTER_PATH" value="out/production/dev/DAL/DalStock/DALStoreController.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_09_05_2021_22_18_[Default_Changelist]/DALStoreController.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="out/production/dev/main.class" />
+    <option name="AFTER_PATH" value="out/production/dev/main.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_09_05_2021_22_18_[Default_Changelist]/main.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="test.db" />
+    <option name="AFTER_PATH" value="test.db" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_09_05_2021_22_18_[Default_Changelist]/test.db" />
+  </binary>
+</changelist>

@@ -1,0 +1,252 @@
+Index: logger.log
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/logger.log b/logger.log
+--- a/logger.log	(revision bd0ade7deb2ec6d0da747ea5d0e65f049debee60)
++++ b/logger.log	(date 1620753399676)
+@@ -42018,6 +42018,243 @@
+ [WARN ] 10-05-2021 21:37:55 [class: DAL.DalController,Line:119] - DalController from RS error due to: java.sql.SQLException: ResultSet closed
+ [WARN ] 10-05-2021 21:37:55 [class: DAL.Mapper,Line:122] - mapper returned null on:class DAL.DalStock.DALSaleDiscount
+ [WARN ] 10-05-2021 21:37:55 [class: Utility.Util,Line:34] - the instance that return from Mapper is null for: class DAL.DalStock.DALSaleDiscount
++[WARN ] 11-05-2021 09:25:09 [class: DAL.DalController,Line:80] - Select query: SELECT * FROM StoreController WHERE storeID=? params: [1]
++failed due to 
++[WARN ] 11-05-2021 09:25:09 [class: DAL.DalController,Line:80] - Select query: SELECT *  
++FROM Shelf  
++WHERE storeID=? AND shelfID=?; params: [1, 1]
++failed due to 
++[WARN ] 11-05-2021 09:25:09 [class: DAL.DalController,Line:80] - Select query: SELECT *  
++FROM Shelf  
++WHERE storeID=? AND shelfID=?; params: [1, 2]
++failed due to 
++[WARN ] 11-05-2021 09:25:09 [class: DAL.DalController,Line:80] - Select query: SELECT *  
++FROM Shelf  
++WHERE storeID=? AND shelfID=?; params: [1, 3]
++failed due to 
++[WARN ] 11-05-2021 09:25:09 [class: DAL.DalController,Line:80] - Select query: SELECT *  
++FROM Shelf  
++WHERE storeID=? AND shelfID=?; params: [1, 4]
++failed due to 
++[WARN ] 11-05-2021 09:25:09 [class: DAL.DalController,Line:80] - Select query: SELECT *  
++FROM Shelf  
++WHERE storeID=? AND shelfID=?; params: [1, 5]
++failed due to 
++[WARN ] 11-05-2021 09:25:09 [class: DAL.DalController,Line:80] - Select query: SELECT *  
++FROM Shelf  
++WHERE storeID=? AND shelfID=?; params: [1, 6]
++failed due to 
++[WARN ] 11-05-2021 09:25:09 [class: DAL.DalController,Line:80] - Select query: SELECT *  
++FROM Shelf  
++WHERE storeID=? AND shelfID=?; params: [1, 7]
++failed due to 
++[WARN ] 11-05-2021 09:25:09 [class: DAL.DalController,Line:80] - Select query: SELECT *  
++FROM Shelf  
++WHERE storeID=? AND shelfID=?; params: [1, 8]
++failed due to 
++[WARN ] 11-05-2021 09:25:09 [class: DAL.DalController,Line:80] - Select query: SELECT *  
++FROM Shelf  
++WHERE storeID=? AND shelfID=?; params: [1, 9]
++failed due to 
++[WARN ] 11-05-2021 09:25:09 [class: DAL.DalController,Line:80] - Select query: SELECT *  
++FROM Shelf  
++WHERE storeID=? AND shelfID=?; params: [1, 10]
++failed due to 
++[WARN ] 11-05-2021 09:25:09 [class: DAL.DalController,Line:80] - Select query: SELECT *  
++FROM Shelf  
++WHERE storeID=? AND shelfID=?; params: [1, 11]
++failed due to 
++[WARN ] 11-05-2021 09:25:09 [class: DAL.DalController,Line:80] - Select query: SELECT *  
++FROM Shelf  
++WHERE storeID=? AND shelfID=?; params: [1, 12]
++failed due to 
++[WARN ] 11-05-2021 09:25:09 [class: DAL.DalController,Line:80] - Select query: SELECT *  
++FROM Shelf  
++WHERE storeID=? AND shelfID=?; params: [1, 13]
++failed due to 
++[WARN ] 11-05-2021 09:25:09 [class: DAL.DalController,Line:80] - Select query: SELECT *  
++FROM Shelf  
++WHERE storeID=? AND shelfID=?; params: [1, 14]
++failed due to 
++[WARN ] 11-05-2021 09:25:09 [class: DAL.DalController,Line:80] - Select query: SELECT *  
++FROM Shelf  
++WHERE storeID=? AND shelfID=?; params: [1, 15]
++failed due to 
++[WARN ] 11-05-2021 09:25:09 [class: DAL.DalController,Line:80] - Select query: SELECT *  
++FROM Shelf  
++WHERE storeID=? AND shelfID=?; params: [1, 16]
++failed due to 
++[WARN ] 11-05-2021 09:25:09 [class: DAL.DalController,Line:80] - Select query: SELECT *  
++FROM Shelf  
++WHERE storeID=? AND shelfID=?; params: [1, 17]
++failed due to 
++[WARN ] 11-05-2021 09:25:09 [class: DAL.DalController,Line:80] - Select query: SELECT *  
++FROM Shelf  
++WHERE storeID=? AND shelfID=?; params: [1, 18]
++failed due to 
++[WARN ] 11-05-2021 09:25:09 [class: DAL.DalController,Line:80] - Select query: SELECT *  
++FROM Shelf  
++WHERE storeID=? AND shelfID=?; params: [1, 19]
++failed due to 
++[WARN ] 11-05-2021 09:25:09 [class: DAL.DalController,Line:80] - Select query: SELECT *  
++FROM Shelf  
++WHERE storeID=? AND shelfID=?; params: [1, 20]
++failed due to 
++[WARN ] 11-05-2021 09:25:09 [class: DAL.DalController,Line:80] - Select query: SELECT *  
++FROM Category  
++WHERE storeId=? AND categoryID=?;  
++ params: [1, 1]
++failed due to 
++[WARN ] 11-05-2021 09:25:09 [class: DAL.DalController,Line:80] - Select query: SELECT *  
++FROM Category  
++WHERE storeId=? AND categoryID=?;  
++ params: [1, 2]
++failed due to 
++[WARN ] 11-05-2021 09:25:09 [class: DAL.DalController,Line:80] - Select query: SELECT *  
++FROM Category  
++WHERE storeId=? AND categoryID=?;  
++ params: [1, 3]
++failed due to 
++[WARN ] 11-05-2021 09:25:09 [class: DAL.DalController,Line:119] - DalController from RS error due to: java.sql.SQLException: ResultSet closed
++[WARN ] 11-05-2021 09:25:09 [class: DAL.Mapper,Line:122] - mapper returned null on:class DAL.DalStock.DALCategory
++[WARN ] 11-05-2021 09:25:09 [class: DAL.DalController,Line:80] - Select query: SELECT *  
++FROM Category  
++WHERE storeId=? AND categoryID=?;  
++ params: [1, 3]
++failed due to 
++[WARN ] 11-05-2021 09:25:09 [class: DAL.DalController,Line:80] - Select query: SELECT *  
++FROM ProductType  
++WHERE storeID=? AND typeID=? ; 
++ params: [1, 1]
++failed due to 
++[WARN ] 11-05-2021 09:25:09 [class: DAL.DalController,Line:119] - DalController from RS error due to: java.sql.SQLException: ResultSet closed
++[WARN ] 11-05-2021 09:25:09 [class: DAL.Mapper,Line:122] - mapper returned null on:class DAL.DalStock.DALProductType
++[WARN ] 11-05-2021 09:25:09 [class: DAL.DalController,Line:80] - Select query: SELECT *  
++FROM ProductType  
++WHERE storeID=? AND typeID=? ; 
++ params: [1, 1]
++failed due to 
++[WARN ] 11-05-2021 09:25:09 [class: DAL.DalController,Line:80] - Select query: SELECT *  
++FROM InstanceController
++WHERE StoreID=? AND typeID=?; params: [1, 1]
++failed due to 
++[WARN ] 11-05-2021 09:25:09 [class: DAL.DalController,Line:119] - DalController from RS error due to: java.sql.SQLException: ResultSet closed
++[WARN ] 11-05-2021 09:25:09 [class: DAL.Mapper,Line:122] - mapper returned null on:class DAL.DalStock.DALInstanceController
++[WARN ] 11-05-2021 09:25:09 [class: DAL.DalController,Line:80] - Select query: SELECT *  
++FROM InstanceController
++WHERE StoreID=? AND typeID=?; params: [1, 1]
++failed due to 
++[WARN ] 11-05-2021 09:25:09 [class: DAL.DalController,Line:80] - Select query: SELECT *  
++FROM ProductType  
++WHERE storeID=? AND typeID=? ; 
++ params: [1, 2]
++failed due to 
++[WARN ] 11-05-2021 09:25:09 [class: DAL.DalController,Line:119] - DalController from RS error due to: java.sql.SQLException: ResultSet closed
++[WARN ] 11-05-2021 09:25:09 [class: DAL.Mapper,Line:122] - mapper returned null on:class DAL.DalStock.DALProductType
++[WARN ] 11-05-2021 09:25:09 [class: DAL.DalController,Line:80] - Select query: SELECT *  
++FROM ProductType  
++WHERE storeID=? AND typeID=? ; 
++ params: [1, 2]
++failed due to 
++[WARN ] 11-05-2021 09:25:09 [class: DAL.DalController,Line:80] - Select query: SELECT *  
++FROM InstanceController
++WHERE StoreID=? AND typeID=?; params: [1, 2]
++failed due to 
++[WARN ] 11-05-2021 09:25:09 [class: DAL.DalController,Line:119] - DalController from RS error due to: java.sql.SQLException: ResultSet closed
++[WARN ] 11-05-2021 09:25:09 [class: DAL.Mapper,Line:122] - mapper returned null on:class DAL.DalStock.DALInstanceController
++[WARN ] 11-05-2021 09:25:09 [class: DAL.DalController,Line:80] - Select query: SELECT *  
++FROM InstanceController
++WHERE StoreID=? AND typeID=?; params: [1, 2]
++failed due to 
++[WARN ] 11-05-2021 09:25:09 [class: BusinessLayer.StockBusiness.StoreController,Line:715] - 0, 1, Shelves
++[WARN ] 11-05-2021 09:25:09 [class: BusinessLayer.StockBusiness.StoreController,Line:715] - 0, 2, Shelves
++[WARN ] 11-05-2021 09:25:09 [class: BusinessLayer.StockBusiness.StoreController,Line:715] - 0, 3, Shelves
++[WARN ] 11-05-2021 09:25:09 [class: BusinessLayer.StockBusiness.StoreController,Line:715] - 0, 4, Shelves
++[WARN ] 11-05-2021 09:25:09 [class: BusinessLayer.StockBusiness.StoreController,Line:715] - 0, 5, Shelves
++[WARN ] 11-05-2021 09:25:09 [class: BusinessLayer.StockBusiness.StoreController,Line:715] - 0, 6, Shelves
++[WARN ] 11-05-2021 09:25:09 [class: BusinessLayer.StockBusiness.StoreController,Line:715] - 0, 7, Shelves
++[WARN ] 11-05-2021 09:25:09 [class: BusinessLayer.StockBusiness.StoreController,Line:715] - 0, 8, Shelves
++[WARN ] 11-05-2021 09:25:09 [class: BusinessLayer.StockBusiness.StoreController,Line:715] - 0, 9, Shelves
++[WARN ] 11-05-2021 09:25:10 [class: BusinessLayer.StockBusiness.StoreController,Line:715] - 0, 10, Shelves
++[WARN ] 11-05-2021 09:25:10 [class: BusinessLayer.StockBusiness.StoreController,Line:715] - 0, 11, Storage
++[WARN ] 11-05-2021 09:25:10 [class: BusinessLayer.StockBusiness.StoreController,Line:715] - 0, 12, Storage
++[WARN ] 11-05-2021 09:25:10 [class: BusinessLayer.StockBusiness.StoreController,Line:715] - 0, 13, Storage
++[WARN ] 11-05-2021 09:25:10 [class: BusinessLayer.StockBusiness.StoreController,Line:715] - 0, 14, Storage
++[WARN ] 11-05-2021 09:25:10 [class: BusinessLayer.StockBusiness.StoreController,Line:715] - 0, 15, Storage
++[WARN ] 11-05-2021 09:25:10 [class: BusinessLayer.StockBusiness.StoreController,Line:715] - 0, 16, Storage
++[WARN ] 11-05-2021 09:25:10 [class: BusinessLayer.StockBusiness.StoreController,Line:715] - 0, 17, Storage
++[WARN ] 11-05-2021 09:25:10 [class: BusinessLayer.StockBusiness.StoreController,Line:715] - 0, 18, Storage
++[WARN ] 11-05-2021 09:25:10 [class: BusinessLayer.StockBusiness.StoreController,Line:715] - 0, 19, Storage
++[WARN ] 11-05-2021 09:25:10 [class: BusinessLayer.StockBusiness.StoreController,Line:715] - 0, 20, Storage
++[WARN ] 11-05-2021 09:25:10 [class: BusinessLayer.StockBusiness.StoreController,Line:721] - the product with productType #1 need new shelf.
++[WARN ] 11-05-2021 09:25:10 [class: BusinessLayer.StockBusiness.StoreController,Line:725] - 0
++[WARN ] 11-05-2021 09:25:10 [class: BusinessLayer.StockBusiness.instance.Shelf,Line:94] - set type of 1 to 1
++[WARN ] 11-05-2021 09:25:10 [class: DAL.DalStock.DALShelf,Line:90] - query: UPDATE Shelf  
++SET typeID=? WHERE storeID=? AND shelfID=?; params: [Tuple{item1=1, item2=class java.lang.Integer}, Tuple{item1=1, item2=class java.lang.Integer}, Tuple{item1=1, item2=class java.lang.Integer}]
++[WARN ] 11-05-2021 09:25:10 [class: BusinessLayer.StockBusiness.StoreController,Line:518] - shelf: 1, 1, Shelves
++[WARN ] 11-05-2021 09:25:10 [class: BusinessLayer.StockBusiness.StoreController,Line:519] - products=[]
++[WARN ] 11-05-2021 09:25:10 [class: BusinessLayer.StockBusiness.instance.InstanceController,Line:106] - adding product to dal from instanceController.
++[WARN ] 11-05-2021 09:25:10 [class: BusinessLayer.StockBusiness.instance.Product,Line:45] - starting 1st check DALProduct
++[WARN ] 11-05-2021 09:25:10 [class: DAL.DalController,Line:80] - Select query: SELECT *  
++FROM Product  
++WHERE storeID=? AND productID=?;  
++ params: [1, 1000]
++failed due to 
++[WARN ] 11-05-2021 09:25:10 [class: BusinessLayer.StockBusiness.instance.Product,Line:47] - did 1st check DALProduct
++[WARN ] 11-05-2021 09:25:10 [class: BusinessLayer.StockBusiness.instance.Product,Line:49] - entry is already in DB, will not attempt insert.
++[WARN ] 11-05-2021 09:25:10 [class: BusinessLayer.StockBusiness.instance.InstanceController,Line:108] - done adding product to dal in instanceController.
++[WARN ] 11-05-2021 09:25:10 [class: BusinessLayer.StockBusiness.instance.InstanceController,Line:110] - done adding product to biz in instanceController.
++[WARN ] 11-05-2021 09:25:10 [class: BusinessLayer.StockBusiness.instance.InstanceController,Line:112] - done adding product to hash in instanceController.
++[WARN ] 11-05-2021 09:25:10 [class: BusinessLayer.StockBusiness.Type.ProductType,Line:341] - adding product to product type.
++[WARN ] 11-05-2021 09:25:10 [class: BusinessLayer.StockBusiness.Type.ProductType,Line:344] - adding shelves to product type.
++[WARN ] 11-05-2021 09:25:10 [class: BusinessLayer.StockBusiness.Type.ProductType,Line:350] - done adding shelves/storage to product type.
++[WARN ] 11-05-2021 09:25:10 [class: BusinessLayer.StockBusiness.StoreController,Line:525] - adding product in store controller.
++[WARN ] 11-05-2021 09:25:10 [class: BusinessLayer.StockBusiness.StoreController,Line:527] - done adding product in store controller.
++[WARN ] 11-05-2021 09:25:10 [class: BusinessLayer.StockBusiness.StoreController,Line:715] - 1, 1, Shelves
++[WARN ] 11-05-2021 09:25:10 [class: BusinessLayer.StockBusiness.StoreController,Line:715] - 0, 2, Shelves
++[WARN ] 11-05-2021 09:25:10 [class: BusinessLayer.StockBusiness.StoreController,Line:715] - 0, 3, Shelves
++[WARN ] 11-05-2021 09:25:10 [class: BusinessLayer.StockBusiness.StoreController,Line:715] - 0, 4, Shelves
++[WARN ] 11-05-2021 09:25:10 [class: BusinessLayer.StockBusiness.StoreController,Line:715] - 0, 5, Shelves
++[WARN ] 11-05-2021 09:25:10 [class: BusinessLayer.StockBusiness.StoreController,Line:715] - 0, 6, Shelves
++[WARN ] 11-05-2021 09:25:10 [class: BusinessLayer.StockBusiness.StoreController,Line:715] - 0, 7, Shelves
++[WARN ] 11-05-2021 09:25:10 [class: BusinessLayer.StockBusiness.StoreController,Line:715] - 0, 8, Shelves
++[WARN ] 11-05-2021 09:25:10 [class: BusinessLayer.StockBusiness.StoreController,Line:715] - 0, 9, Shelves
++[WARN ] 11-05-2021 09:25:10 [class: BusinessLayer.StockBusiness.StoreController,Line:715] - 0, 10, Shelves
++[WARN ] 11-05-2021 09:25:10 [class: BusinessLayer.StockBusiness.StoreController,Line:715] - 0, 11, Storage
++[WARN ] 11-05-2021 09:25:10 [class: BusinessLayer.StockBusiness.StoreController,Line:715] - 0, 12, Storage
++[WARN ] 11-05-2021 09:25:10 [class: BusinessLayer.StockBusiness.StoreController,Line:715] - 0, 13, Storage
++[WARN ] 11-05-2021 09:25:10 [class: BusinessLayer.StockBusiness.StoreController,Line:715] - 0, 14, Storage
++[WARN ] 11-05-2021 09:25:10 [class: BusinessLayer.StockBusiness.StoreController,Line:715] - 0, 15, Storage
++[WARN ] 11-05-2021 09:25:10 [class: BusinessLayer.StockBusiness.StoreController,Line:715] - 0, 16, Storage
++[WARN ] 11-05-2021 09:25:10 [class: BusinessLayer.StockBusiness.StoreController,Line:715] - 0, 17, Storage
++[WARN ] 11-05-2021 09:25:10 [class: BusinessLayer.StockBusiness.StoreController,Line:715] - 0, 18, Storage
++[WARN ] 11-05-2021 09:25:10 [class: BusinessLayer.StockBusiness.StoreController,Line:715] - 0, 19, Storage
++[WARN ] 11-05-2021 09:25:10 [class: BusinessLayer.StockBusiness.StoreController,Line:715] - 0, 20, Storage
++[WARN ] 11-05-2021 09:25:10 [class: BusinessLayer.StockBusiness.StoreController,Line:721] - the product with productType #2 need new shelf.
++[WARN ] 11-05-2021 09:25:10 [class: BusinessLayer.StockBusiness.StoreController,Line:725] - 1
++[WARN ] 11-05-2021 09:25:10 [class: BusinessLayer.StockBusiness.StoreController,Line:725] - 0
++[WARN ] 11-05-2021 09:25:10 [class: BusinessLayer.StockBusiness.instance.Shelf,Line:94] - set type of 2 to 2
++[WARN ] 11-05-2021 09:25:10 [class: DAL.DalStock.DALShelf,Line:90] - query: UPDATE Shelf  
++SET typeID=? WHERE storeID=? AND shelfID=?; params: [Tuple{item1=2, item2=class java.lang.Integer}, Tuple{item1=1, item2=class java.lang.Integer}, Tuple{item1=2, item2=class java.lang.Integer}]
++[WARN ] 11-05-2021 09:25:10 [class: BusinessLayer.StockBusiness.StoreController,Line:518] - shelf: 2, 2, Shelves
++[WARN ] 11-05-2021 09:25:10 [class: BusinessLayer.StockBusiness.StoreController,Line:519] - products=[]
++[WARN ] 11-05-2021 09:25:10 [class: BusinessLayer.StockBusiness.instance.InstanceController,Line:106] - adding product to dal from instanceController.
++[WARN ] 11-05-2021 09:25:10 [class: BusinessLayer.StockBusiness.instance.Product,Line:45] - starting 1st check DALProduct
++[WARN ] 11-05-2021 09:25:10 [class: DAL.DalController,Line:80] - Select query: SELECT *  
++FROM Product  
++WHERE storeID=? AND productID=?;  
++ params: [1, 2000]
++failed due to 
++[WARN ] 11-05-2021 09:25:10 [class: BusinessLayer.StockBusiness.instance.Product,Line:47] - did 1st check DALProduct
++[WARN ] 11-05-2021 09:25:10 [class: BusinessLayer.StockBusiness.instance.Product,Line:49] - entry is already in DB, will not attempt insert.
++[WARN ] 11-05-2021 09:25:10 [class: BusinessLayer.StockBusiness.instance.InstanceController,Line:108] - done adding product to dal in instanceController.
++[WARN ] 11-05-2021 09:25:10 [class: BusinessLayer.StockBusiness.instance.InstanceController,Line:110] - done adding product to biz in instanceController.
++[WARN ] 11-05-2021 09:25:10 [class: BusinessLayer.StockBusiness.instance.InstanceController,Line:112] - done adding product to hash in instanceController.
++[WARN ] 11-05-2021 09:25:10 [class: BusinessLayer.StockBusiness.Type.ProductType,Line:341] - adding product to product type.
++[WARN ] 11-05-2021 09:25:10 [class: BusinessLayer.StockBusiness.Type.ProductType,Line:344] - adding shelves to product type.
++[WARN ] 11-05-2021 09:25:10 [class: BusinessLayer.StockBusiness.Type.ProductType,Line:350] - done adding shelves/storage to product type.
++[WARN ] 11-05-2021 09:25:10 [class: BusinessLayer.StockBusiness.StoreController,Line:525] - adding product in store controller.
++[WARN ] 11-05-2021 09:25:10 [class: BusinessLayer.StockBusiness.StoreController,Line:527] - done adding product in store controller.
+ [WARN ] 10-05-2021 22:09:46 [class: DAL.DalController,Line:80] - Select query: SELECT * FROM StoreController WHERE storeID=? params: [1]
+ failed due to 
+ [WARN ] 10-05-2021 22:09:46 [class: DAL.DalController,Line:80] - Select query: SELECT *  

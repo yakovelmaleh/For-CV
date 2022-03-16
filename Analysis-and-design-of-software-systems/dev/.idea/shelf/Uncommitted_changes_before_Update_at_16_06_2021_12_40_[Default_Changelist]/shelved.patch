@@ -1,0 +1,87 @@
+Index: .idea/misc.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<project version=\"4\">\r\n  <component name=\"ProjectRootManager\" version=\"2\" languageLevel=\"JDK_X\" default=\"true\" project-jdk-name=\"16\" project-jdk-type=\"JavaSDK\">\r\n    <output url=\"file://$PROJECT_DIR$/out\" />\r\n  </component>\r\n</project>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/misc.xml b/.idea/misc.xml
+--- a/.idea/misc.xml	(revision e575397adfe0145af5372ca9fbb4196eda5e3814)
++++ b/.idea/misc.xml	(date 1623836122247)
+@@ -1,6 +1,6 @@
+ <?xml version="1.0" encoding="UTF-8"?>
+ <project version="4">
+-  <component name="ProjectRootManager" version="2" languageLevel="JDK_X" default="true" project-jdk-name="16" project-jdk-type="JavaSDK">
++  <component name="ProjectRootManager" version="2" languageLevel="JDK_16" default="true" project-jdk-name="16" project-jdk-type="JavaSDK">
+     <output url="file://$PROJECT_DIR$/out" />
+   </component>
+ </project>
+\ No newline at end of file
+Index: src/META-INF/MANIFEST.MF
+===================================================================
+diff --git a/src/META-INF/MANIFEST.MF b/src/META-INF/MANIFEST.MF
+deleted file mode 100644
+--- a/src/META-INF/MANIFEST.MF	(revision e575397adfe0145af5372ca9fbb4196eda5e3814)
++++ /dev/null	(revision e575397adfe0145af5372ca9fbb4196eda5e3814)
+@@ -1,3 +0,0 @@
+-Manifest-Version: 1.0
+-Main-Class: main
+-
+Index: out/production/dev/log4j.properties
+===================================================================
+diff --git a/out/production/dev/log4j.properties b/out/production/dev/log4j.properties
+deleted file mode 100644
+--- a/out/production/dev/log4j.properties	(revision e575397adfe0145af5372ca9fbb4196eda5e3814)
++++ /dev/null	(revision e575397adfe0145af5372ca9fbb4196eda5e3814)
+@@ -1,13 +0,0 @@
+-log4j.rootLogger=debug, file
+-
+-log4j.appender.stdout=org.apache.log4j.ConsoleAppender
+-log4j.appender.stdout.Target=System.out
+-log4j.appender.stdout.layout=org.apache.log4j.PatternLayout
+-log4j.appender.stdout.layout.ConversionPattern=[%-5p] %d{dd-MM-yyyy HH:mm:ss} [class: %c,Line:%L] - %m%n
+-
+-log4j.appender.file=org.apache.log4j.RollingFileAppender
+-log4j.appender.file.File=logger.log
+-log4j.appender.file.MaxFileSize=10MB
+-log4j.appender.file.MaxBackupIndex=10
+-log4j.appender.file.layout=org.apache.log4j.PatternLayout
+-log4j.appender.file.layout.ConversionPattern=[%-5p] %d{dd-MM-yyyy HH:mm:ss} [class: %c,Line:%L] - %m%n
+Index: out/production/dev/META-INF/MANIFEST.MF
+===================================================================
+diff --git a/out/production/dev/META-INF/MANIFEST.MF b/out/production/dev/META-INF/MANIFEST.MF
+deleted file mode 100644
+--- a/out/production/dev/META-INF/MANIFEST.MF	(revision e575397adfe0145af5372ca9fbb4196eda5e3814)
++++ /dev/null	(revision e575397adfe0145af5372ca9fbb4196eda5e3814)
+@@ -1,3 +0,0 @@
+-Manifest-Version: 1.0
+-Main-Class: main
+-
+Index: .idea/artifacts/dev_jar.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><component name=\"ArtifactManager\">\r\n  <artifact type=\"jar\" name=\"dev:jar\">\r\n    <output-path>$PROJECT_DIR$/out/artifacts/dev_jar</output-path>\r\n    <root id=\"archive\" name=\"dev.jar\">\r\n      <element id=\"module-output\" name=\"dev\" />\r\n      <element id=\"extracted-dir\" path=\"$PROJECT_DIR$/lib/apache-log4j-extras-1.2.17.jar\" path-in-jar=\"/\" />\r\n      <element id=\"extracted-dir\" path=\"$PROJECT_DIR$/lib/log4j-1.2.17.jar\" path-in-jar=\"/\" />\r\n      <element id=\"extracted-dir\" path=\"$PROJECT_DIR$/lib/sqlite-jdbc-3.20.1.jar\" path-in-jar=\"/\" />\r\n      <element id=\"extracted-dir\" path=\"$PROJECT_DIR$/lib/mockito-all-1.9.0.jar\" path-in-jar=\"/\" />\r\n      <element id=\"module-source\" name=\"dev\" />\r\n      <element id=\"library\" level=\"application\" name=\"log4j:apache-log4j-extras:1.2.17\" />\r\n      <element id=\"library\" level=\"application\" name=\"sqlite-jdbc-3.20.1\" />\r\n      <element id=\"library\" level=\"application\" name=\"org.mockito:mockito-all:1.9.01\" />\r\n    </root>\r\n  </artifact>\r\n</component>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/artifacts/dev_jar.xml b/.idea/artifacts/dev_jar.xml
+--- a/.idea/artifacts/dev_jar.xml	(revision e575397adfe0145af5372ca9fbb4196eda5e3814)
++++ b/.idea/artifacts/dev_jar.xml	(date 1623836230671)
+@@ -3,14 +3,11 @@
+     <output-path>$PROJECT_DIR$/out/artifacts/dev_jar</output-path>
+     <root id="archive" name="dev.jar">
+       <element id="module-output" name="dev" />
+-      <element id="extracted-dir" path="$PROJECT_DIR$/lib/apache-log4j-extras-1.2.17.jar" path-in-jar="/" />
+       <element id="extracted-dir" path="$PROJECT_DIR$/lib/log4j-1.2.17.jar" path-in-jar="/" />
++      <element id="extracted-dir" path="$PROJECT_DIR$/lib/apache-log4j-extras-1.2.17.jar" path-in-jar="/" />
+       <element id="extracted-dir" path="$PROJECT_DIR$/lib/sqlite-jdbc-3.20.1.jar" path-in-jar="/" />
+-      <element id="extracted-dir" path="$PROJECT_DIR$/lib/mockito-all-1.9.0.jar" path-in-jar="/" />
+       <element id="module-source" name="dev" />
+-      <element id="library" level="application" name="log4j:apache-log4j-extras:1.2.17" />
+-      <element id="library" level="application" name="sqlite-jdbc-3.20.1" />
+-      <element id="library" level="application" name="org.mockito:mockito-all:1.9.01" />
++      <element id="library" level="application" name="apache-log4j-extras-1.2.17" />
+     </root>
+   </artifact>
+ </component>
+\ No newline at end of file

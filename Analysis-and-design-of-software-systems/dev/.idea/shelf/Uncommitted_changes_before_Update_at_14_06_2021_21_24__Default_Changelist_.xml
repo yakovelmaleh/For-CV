@@ -1,0 +1,14 @@
+<changelist name="Uncommitted_changes_before_Update_at_14_06_2021_21_24_[Default_Changelist]" date="1623695050065" recycled="false" toDelete="true">
+  <option name="PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_14_06_2021_21_24_[Default_Changelist]/shelved.patch" />
+  <option name="DESCRIPTION" value="Uncommitted changes before Update at 14/06/2021 21:24 [Default Changelist]" />
+  <binary>
+    <option name="BEFORE_PATH" value="out/production/dev/Business/SupplierBusiness/facade/SupplierService.class" />
+    <option name="AFTER_PATH" value="out/production/dev/Business/SupplierBusiness/facade/SupplierService.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_14_06_2021_21_24_[Default_Changelist]/SupplierService.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="out/production/dev/Business/StockBusiness/Fcade/StorageService.class" />
+    <option name="AFTER_PATH" value="out/production/dev/Business/StockBusiness/Fcade/StorageService.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_14_06_2021_21_24_[Default_Changelist]/StorageService.class" />
+  </binary>
+</changelist>

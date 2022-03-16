@@ -1,0 +1,35 @@
+Index: out/production/ADSS_Group_B/log4j.properties
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>log4j.rootLogger=warn, file, stdout\r\n\r\nlog4j.appender.stdout=org.apache.log4j.ConsoleAppender\r\nlog4j.appender.stdout.Target=System.out\r\nlog4j.appender.stdout.layout=org.apache.log4j.PatternLayout\r\nlog4j.appender.stdout.layout.ConversionPattern=[%-5p] %d{dd-MM-yyyy HH:mm:ss} [class: %c,Line:%L] - %m%n\r\n\r\nlog4j.appender.file=org.apache.log4j.RollingFileAppender\r\nlog4j.appender.file.File=logger.log\r\nlog4j.appender.file.MaxFileSize=10MB\r\nlog4j.appender.file.MaxBackupIndex=10\r\nlog4j.appender.file.layout=org.apache.log4j.PatternLayout\r\nlog4j.appender.file.layout.ConversionPattern=[%-5p] %d{dd-MM-yyyy HH:mm:ss} [class: %c,Line:%L] - %m%n\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/out/production/ADSS_Group_B/log4j.properties b/out/production/ADSS_Group_B/log4j.properties
+--- a/out/production/ADSS_Group_B/log4j.properties	
++++ b/out/production/ADSS_Group_B/log4j.properties	
+@@ -1,4 +1,4 @@
+-log4j.rootLogger=warn, file, stdout
++log4j.rootLogger=error, file, stdout
+ 
+ log4j.appender.stdout=org.apache.log4j.ConsoleAppender
+ log4j.appender.stdout.Target=System.out
+Index: ../.idea/misc.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<project version=\"4\">\r\n  <component name=\"ProjectRootManager\" version=\"2\" languageLevel=\"JDK_14\" default=\"false\" project-jdk-name=\"15\" project-jdk-type=\"JavaSDK\">\r\n    <output url=\"file://$PROJECT_DIR$/dev/out\" />\r\n  </component>\r\n</project>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/../.idea/misc.xml b/../.idea/misc.xml
+--- a/../.idea/misc.xml	
++++ b/../.idea/misc.xml	
+@@ -1,6 +1,6 @@
+ <?xml version="1.0" encoding="UTF-8"?>
+ <project version="4">
+-  <component name="ProjectRootManager" version="2" languageLevel="JDK_14" default="false" project-jdk-name="15" project-jdk-type="JavaSDK">
++  <component name="ProjectRootManager" version="2" languageLevel="JDK_16_PREVIEW" project-jdk-name="15" project-jdk-type="JavaSDK">
+     <output url="file://$PROJECT_DIR$/dev/out" />
+   </component>
+ </project>
+\ No newline at end of file

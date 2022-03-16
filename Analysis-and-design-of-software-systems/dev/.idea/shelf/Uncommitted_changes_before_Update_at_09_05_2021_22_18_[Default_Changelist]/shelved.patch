@@ -1,0 +1,153 @@
+Index: src/main.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>import BusinessLayer.StockBusiness.Fcade.StorageService;\r\nimport BusinessLayer.StockBusiness.Fcade.outObjects.ProductType;\r\nimport BusinessLayer.StockBusiness.StoreController;\r\nimport DAL.DalController;\r\nimport DAL.DalStock.DALStoreController;\r\nimport DAL.Mapper;\r\nimport Presentation.mainCLI;\r\nimport Utility.Tuple;\r\nimport org.apache.log4j.Logger;\r\n\r\nimport java.text.ParseException;\r\nimport java.text.SimpleDateFormat;\r\nimport java.util.ArrayList;\r\nimport java.util.Collections;\r\nimport java.util.Date;\r\nimport java.util.List;\r\n\r\npublic class main {\r\n    final static Logger log=Logger.getLogger(main.class);\r\n    public static void main(String[] args) {\r\n//        Mapper.getMap(\"test.db\");\r\n//         mainCLI CLI = new mainCLI();\r\n//         CLI.start(true);\r\n\r\n       Mapper map = Mapper.getMap(\"test.db\");\r\n        List<Tuple<Object,Class>> b =new ArrayList<>();\r\n        b.add(new Tuple<>(1,Integer.class));\r\n        b.add(new Tuple<>(1,Integer.class));\r\n        b.add(new Tuple<>(1,Integer.class));\r\n        b.add(new Tuple<>(1,Integer.class));\r\n        b.add(new Tuple<>(1,Integer.class));\r\n        b.add(new Tuple<>(1,Integer.class));\r\n        b.add(new Tuple<>(1,Integer.class));\r\n\r\n        map.setItem(DALStoreController.class,b);\r\n        List<Integer> a=new ArrayList<>();\r\n        a.add(1);\r\n        DALStoreController sc=(DALStoreController) map.getItem(DALStoreController.class,a );\r\n        map.deleteItem(DALStoreController.class,a);\r\n    }\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main.java b/src/main.java
+--- a/src/main.java	(revision e9a0a046c8a53740bb49857bc7084db6f1a155bc)
++++ b/src/main.java	(date 1620587511244)
+@@ -18,24 +18,24 @@
+ public class main {
+     final static Logger log=Logger.getLogger(main.class);
+     public static void main(String[] args) {
+-//        Mapper.getMap("test.db");
+-//         mainCLI CLI = new mainCLI();
+-//         CLI.start(true);
++        Mapper.getMap("test.db");
++        mainCLI CLI = new mainCLI();
++        CLI.start(true);
+ 
+-       Mapper map = Mapper.getMap("test.db");
+-        List<Tuple<Object,Class>> b =new ArrayList<>();
+-        b.add(new Tuple<>(1,Integer.class));
+-        b.add(new Tuple<>(1,Integer.class));
+-        b.add(new Tuple<>(1,Integer.class));
+-        b.add(new Tuple<>(1,Integer.class));
+-        b.add(new Tuple<>(1,Integer.class));
+-        b.add(new Tuple<>(1,Integer.class));
+-        b.add(new Tuple<>(1,Integer.class));
+-
+-        map.setItem(DALStoreController.class,b);
+-        List<Integer> a=new ArrayList<>();
+-        a.add(1);
+-        DALStoreController sc=(DALStoreController) map.getItem(DALStoreController.class,a );
+-        map.deleteItem(DALStoreController.class,a);
++//       Mapper map = Mapper.getMap("test.db");
++//        List<Tuple<Object,Class>> b =new ArrayList<>();
++//        b.add(new Tuple<>(1,Integer.class));
++//        b.add(new Tuple<>(1,Integer.class));
++//        b.add(new Tuple<>(1,Integer.class));
++//        b.add(new Tuple<>(1,Integer.class));
++//        b.add(new Tuple<>(1,Integer.class));
++//        b.add(new Tuple<>(1,Integer.class));
++//        b.add(new Tuple<>(1,Integer.class));
++//
++//        map.setItem(DALStoreController.class,b);
++//        List<Integer> a=new ArrayList<>();
++//        a.add(1);
++//        DALStoreController sc=(DALStoreController) map.getItem(DALStoreController.class,a );
++//        map.deleteItem(DALStoreController.class,a);
+     }
+ }
+Index: src/DAL/DalStock/DALStoreController.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package DAL.DalStock;\r\n\r\nimport DAL.DALObject;\r\nimport DAL.DalController;\r\nimport Utility.Tuple;\r\nimport org.apache.log4j.Logger;\r\n\r\nimport java.util.ArrayList;\r\nimport java.util.List;\r\nimport java.util.stream.Collectors;\r\n\r\npublic class DALStoreController extends DALObject {\r\n\r\n    private int _storeID=0;\r\n    private int _typeCounter=0;\r\n    private int _categoryCounter=0;\r\n    private int _discountCounter=0;\r\n    private int _numberOfShelves=10;\r\n    private int _storeShelves;\r\n    private String tableName=\"StoreController\";\r\n\r\n    final static Logger log=Logger.getLogger(DALStoreController.class);\r\n\r\n    public DALStoreController(){\r\n        super(null);\r\n    }\r\n\r\n    public DALStoreController(Integer storeID, Integer storeShelves, Integer shelves, Integer discountCounter,\r\n                              Integer typeCounter, Integer categoryCounter, Integer maxProductsOnType, DalController dc){\r\n        super(dc);\r\n    }\r\n    //get categories controllers discounts and product types from controller\r\n\r\n    @Override\r\n    public String getCreate() {\r\n        return \"CREATE TABLE IF NOT EXISTS StoreController (\\n\" +\r\n                \"\\tstoreID INTEGER PRIMARY KEY NOT NULL,\\n\" +\r\n                \"\\tstoreShelves INTEGER NOT NULL,\\n\" +\r\n                \"\\tnumberOfShelves INTEGER NOT NULL,\\n\" +\r\n                \"\\tdiscountCounter INTEGER NOT NULL,\\n\" +\r\n                \"\\ttypeCounter INTEGER NOT NULL,\\n\" +\r\n                \"\\tcategoryCounter INTEGER NOT NULL,\\n\" +\r\n                \"\\tmaxProductsOnType INTEGER NOT NULL\\n\" +\r\n                \");\";\r\n    }\r\n\r\n    @Override\r\n    public String getSelect() {\r\n        return \"SELECT * FROM StoreController WHERE storeID=?\";\r\n    }\r\n\r\n    @Override\r\n    public String getDelete() {\r\n        return null;\r\n    }\r\n\r\n    @Override\r\n    public String getUpdate() {\r\n        return null;\r\n    }\r\n\r\n    @Override\r\n    public String getInsert() {\r\n        return \"INSERT OR REPLACE INTO StoreController VALUES (?,?,?,?,?,?,?);\";\r\n    }\r\n\r\n    public int getStoreID(){\r\n        return _storeID;\r\n    }\r\n    public int categoryCounter(){\r\n        return _categoryCounter;\r\n    }\r\n    public void setCategoryCounter(int i){\r\n        update(prepareList(tableName,\"categoryCounter\",i,_storeID));\r\n        _categoryCounter=i;\r\n    }\r\n    private void update(List<Tuple<Object,Class>> list){\r\n        String updateName= \"\"\"\r\n                UPDATE ?\\s\r\n                SET ?=?\r\n                WHERE\\s\r\n                storeID=?;\"\"\";\r\n        try {\r\n            DC.noSelect(updateName, list);\r\n        }\r\n        catch (Exception e){\r\n            throw new IllegalArgumentException(\"fail\");\r\n        }\r\n    }\r\n    public int getTypeCounter(){\r\n        return _typeCounter;\r\n    }\r\n    public void setTypeCounter(int i){\r\n        update(prepareList(tableName,\"typeCounter\",i,_storeID));\r\n        _typeCounter=i;\r\n    }\r\n    public int get_discountCounter(){\r\n        return _discountCounter;\r\n    }\r\n    public void set_discountCounter(int i){\r\n        update(prepareList(tableName,\"discountCounter\",i,_storeID));\r\n        _discountCounter=i;\r\n    }\r\n    public int get_storeShelves(){\r\n        return _storeShelves;\r\n    }\r\n    public int get_numberOfShelves(){\r\n        return _numberOfShelves;\r\n    }\r\n    public List<Integer> getListShelves(){\r\n        return selectMany(\"shelfID\",\"Shelf\");\r\n    }\r\n    public List<Integer> getTypes(){\r\n        return selectMany(\"typeID\",\"ProductType\");\r\n    }\r\n    public List<Integer> selectMany(String column,String table){\r\n        String query=\"SELECT \"+column+\" \\n\"+\r\n                \"FROM \"+table+\"\\n\" +\r\n                \"WHERE storeID=? ;\\n\";\r\n        List<Integer> list= new ArrayList<>();\r\n        list.add(_storeID);\r\n        try {\r\n            return DC.SelectMany(query,list).stream().map(x->(Integer)x.item2.get(0)).collect(Collectors.toList());\r\n        }\r\n        catch (Exception e){\r\n            throw new IllegalArgumentException(\"fail\");\r\n        }\r\n    }\r\n    public List<Integer> getSaleCategoryDiscount(){\r\n        String query= \"\"\"\r\n                SELECT discountID \\s\r\n                FROM Discount \\s\r\n                WHERE storeID=? AND categoryID>0 ;\\s\r\n                \"\"\";\r\n        List<Integer> list= new ArrayList<>();\r\n        list.add(_storeID);\r\n        try {\r\n            return DC.SelectMany(query,list).stream().map(x->(Integer)x.item2.get(0)).collect(Collectors.toList());\r\n        }\r\n        catch (Exception e){\r\n            throw new IllegalArgumentException(\"fail\");\r\n        }\r\n    }\r\n    public List<Integer> getCategories(){\r\n        return selectMany(\"categoryID\",\"Category\");\r\n    }\r\n    private List<Tuple<Object,Class>> prepareList(Object... o){\r\n        List<Tuple<Object,Class>> params=new ArrayList<>();\r\n        for (Object o1:o){\r\n            params.add(new Tuple<>(o1,o1.getClass()));\r\n        }\r\n        return params;\r\n    }\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/DAL/DalStock/DALStoreController.java b/src/DAL/DalStock/DALStoreController.java
+--- a/src/DAL/DalStock/DALStoreController.java	(revision e9a0a046c8a53740bb49857bc7084db6f1a155bc)
++++ b/src/DAL/DalStock/DALStoreController.java	(date 1620587484082)
+@@ -71,9 +71,23 @@
+         return _categoryCounter;
+     }
+     public void setCategoryCounter(int i){
+-        update(prepareList(tableName,"categoryCounter",i,_storeID));
++        updateCategoryCounter(prepareList(i,_storeID));
+         _categoryCounter=i;
+     }
++
++    private void updateCategoryCounter(List<Tuple<Object,Class>> list){
++        String updateName= """
++                UPDATE StoreController\s
++                SET categoryCounter = ?\s
++                WHERE\s
++                storeID = ?;""";
++        try {
++            DC.noSelect(updateName, list);
++        }
++        catch (Exception e){
++            throw new IllegalArgumentException("fail");
++        }
++    }
+     private void update(List<Tuple<Object,Class>> list){
+         String updateName= """
+                 UPDATE ?\s
+@@ -91,16 +105,45 @@
+         return _typeCounter;
+     }
+     public void setTypeCounter(int i){
+-        update(prepareList(tableName,"typeCounter",i,_storeID));
++        updateTypeCounter(prepareList(i,_storeID));
+         _typeCounter=i;
+     }
++
++    private void updateTypeCounter(List<Tuple<Object,Class>> list){
++        String updateName= """
++                UPDATE StoreController\s
++                SET typeCounter = ?\s
++                WHERE\s
++                storeID = ?;""";
++        try {
++            DC.noSelect(updateName, list);
++        }
++        catch (Exception e){
++            throw new IllegalArgumentException("fail");
++        }
++    }
+     public int get_discountCounter(){
+         return _discountCounter;
+     }
+     public void set_discountCounter(int i){
+-        update(prepareList(tableName,"discountCounter",i,_storeID));
++        updateDiscountCounter(prepareList(i,_storeID));
+         _discountCounter=i;
+     }
++
++    private void updateDiscountCounter(List<Tuple<Object,Class>> list){
++        String updateName= """
++                UPDATE StoreController\s
++                SET discountCounter = ?\s
++                WHERE\s
++                storeID = ?;""";
++        try {
++            DC.noSelect(updateName, list);
++        }
++        catch (Exception e){
++            throw new IllegalArgumentException("fail");
++        }
++    }
++
+     public int get_storeShelves(){
+         return _storeShelves;
+     }
+Index: logger.log
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/logger.log b/logger.log
+--- a/logger.log	(revision e9a0a046c8a53740bb49857bc7084db6f1a155bc)
++++ b/logger.log	(date 1620587519492)
+@@ -33420,3 +33420,8 @@
+ failed due to [SQLITE_ERROR] SQL error or missing database (foreign key mismatch - "Discount" referencing "Supplier")
+ [WARN ] 09-05-2021 20:23:46 [class: DAL.Mapper,Line:157] - org.sqlite.SQLiteException: [SQLITE_ERROR] SQL error or missing database (foreign key mismatch - "Discount" referencing "Supplier")
+ [WARN ] 09-05-2021 20:23:46 [class: DAL.DalController,Line:114] - ResultSet closed
++[WARN ] 09-05-2021 20:28:52 [class: DAL.DalController,Line:67] - noSelect quary: INSERT OR REPLACE INTO StoreController VALUES (?,?,?,?,?,?,?) params: [Tuple{item1=1, item2=class java.lang.Integer}, Tuple{item1=1, item2=class java.lang.Integer}, Tuple{item1=1, item2=class java.lang.Integer}, Tuple{item1=1, item2=class java.lang.Integer}, Tuple{item1=1, item2=class java.lang.Integer}, Tuple{item1=1, item2=class java.lang.Integer}, Tuple{item1=1, item2=class java.lang.Integer}]
++failed due to [SQLITE_ERROR] SQL error or missing database (foreign key mismatch - "Discount" referencing "Supplier")
++[WARN ] 09-05-2021 20:28:52 [class: DAL.Mapper,Line:157] - org.sqlite.SQLiteException: [SQLITE_ERROR] SQL error or missing database (foreign key mismatch - "Discount" referencing "Supplier")
++[WARN ] 09-05-2021 20:28:52 [class: DAL.DalController,Line:114] - ResultSet closed
++[WARN ] 09-05-2021 22:11:59 [class: Utility.Util,Line:28] - the instance that return from Mapper is null

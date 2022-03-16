@@ -1,0 +1,374 @@
+Index: src/DAL/DalStock/DALDiscount.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package DAL.DalStock;\r\n\r\nimport DAL.DALObject;\r\nimport DAL.DalController;\r\nimport Utility.Tuple;\r\n\r\nimport java.text.DateFormat;\r\nimport java.text.SimpleDateFormat;\r\nimport java.util.ArrayList;\r\nimport java.util.Date;\r\nimport java.util.List;\r\n\r\npublic abstract class DALDiscount extends DALObject {\r\n\r\n    protected int _discountID;\r\n    protected float _percent;\r\n    protected String _start;\r\n    protected String _end;\r\n    protected int storeID;\r\n    private int typeId;\r\n    protected String tableName=\"Discount\";\r\n\r\n\r\n    public DALDiscount(DalController dc,int storeID,int discountID,int typeId,float percent,Date start,Date end) {\r\n        super(dc);\r\n        _discountID=discountID;\r\n        _percent=percent;\r\n        String pattern=\"dd-MM-yyyy\";\r\n        DateFormat df=new SimpleDateFormat(pattern);\r\n        _start=df.format(start);\r\n        _end=df.format(end);\r\n        this.storeID=storeID;\r\n        this.typeId=typeId;\r\n    }\r\n\r\n    public DALDiscount(DalController dc) {\r\n        super(dc);\r\n    }\r\n\r\n    @Override\r\n    public String getCreate() {\r\n        return \"CREATE TABLE IF NOT EXISTS Discount (\\n\" +\r\n                \"\\tstoreID INTEGER NOT NULL UNIQUE,\\n\" +\r\n                \"\\tdiscountID INTEGER NOT NULL UNIQUE,\\n\" +\r\n                \"\\ttypeID INTEGER,\\n\" +\r\n                \"\\tcategoryID INTEGER,\\n\" +\r\n                \"\\tsupplierID INTEGER,\\n\" +\r\n                \"\\tpercent DOUBLE NOT NULL,\\n\" +\r\n                \"\\tstartDate VARCHAR NOT NULL,\\n\" +\r\n                \"\\tendDate VARCHAR NOT NULL,\\n\" +\r\n                \"\\tPRIMARY KEY (storeID, discountID),\\n\" +\r\n                \"\\tUNIQUE (storeID, discountID),\\n\" +\r\n                \"\\tFOREIGN KEY (storeID) REFERENCES StoreController(storeID)\\n\" +\r\n                \"\\tON DELETE CASCADE ON UPDATE CASCADE,\\n\" +\r\n                \"\\tFOREIGN KEY (storeID,typeID) REFERENCES ProductType(storeID,typeID)\\n\" +\r\n                \"\\tON DELETE CASCADE ON UPDATE CASCADE,\\n\" +\r\n                \"\\tFOREIGN KEY (storeID,categoryID) REFERENCES Category(storeID,categoryID)\\n\" +\r\n                \"\\tON DELETE CASCADE ON UPDATE CASCADE\\n\" +\r\n                \"\\tFOREIGN KEY (storeID,supplierID) REFERENCES Supplier(storeID,supplierID)\\n\" +\r\n                \"\\tON DELETE CASCADE ON UPDATE CASCADE\\n\" +\r\n                \");\";\r\n    }\r\n\r\n    @Override\r\n    public String getSelect() {\r\n        return \"\"\"\r\n                SELECT *\\s\r\n                FROM Discount\\s\r\n                WHERE storeID=? AND discountID=?;\\s\r\n                \"\"\";\r\n    }\r\n\r\n    @Override\r\n    public String getDelete() {\r\n        return \"\"\"\r\n                DELETE FROM Discount\\s\r\n                WHERE storeID=? AND discountID=?; \\s\r\n                \"\"\";\r\n    }\r\n\r\n    @Override\r\n    public String getUpdate() {\r\n        return null;\r\n    }\r\n\r\n    @Override\r\n    public String getInsert() {\r\n        return \"\"\"\r\n                INSERT OR REPLACE INTO Discount VALUES (?,?,?,?,?,?,?,?);\r\n                \"\"\";\r\n    }\r\n\r\n    public int getID() {\r\n        return _discountID;\r\n    }\r\n\r\n    public float getPercent() {\r\n        return _percent;\r\n    }\r\n\r\n    public Date getStartDate() {\r\n        try {\r\n            return new SimpleDateFormat(\"dd-MM-yyyy\").parse(_start);\r\n        }\r\n        catch (Exception e){\r\n            throw new IllegalArgumentException(\"DateBug\");\r\n        }\r\n    }\r\n\r\n    public Date getEndDate() {\r\n        try {\r\n            return new SimpleDateFormat(\"dd-MM-yyyy\").parse(_end);\r\n        }\r\n        catch (Exception e){\r\n            throw new IllegalArgumentException(\"DateBug\");\r\n        }\r\n    }\r\n\r\n    public void setTypeID(int i){\r\n        String query= \"\"\"\r\n                UPDATE Discount \\s\r\n                SET typeID=?\r\n                WHERE storeID=? AND discountID=?;\r\n                \"\"\";\r\n        List<Tuple<Object,Class>> params=prepareList(i,storeID,_discountID);\r\n        try {\r\n            DC.noSelect(query,params);\r\n        }\r\n        catch (Exception e){\r\n            throw new IllegalArgumentException(\"fail\");\r\n        }\r\n        typeId=i;\r\n    }\r\n    public void removeTypeID(int i) {\r\n        String query= \"\"\"\r\n                UPDATE Discount \\s\r\n                SET typeID=?\r\n                WHERE storeID=? AND discountID=? AND typeId=?;\r\n                \"\"\";\r\n        List<Tuple<Object,Class>> params=prepareList(0,storeID,_discountID,i);\r\n        try {\r\n            DC.noSelect(query,params);\r\n        }\r\n        catch (Exception e){\r\n            throw new IllegalArgumentException(\"fail\");\r\n        }\r\n        typeId=0;\r\n    }\r\n    protected List<Tuple<Object,Class>> prepareList(Object... o){\r\n        List<Tuple<Object,Class>> params=new ArrayList<>();\r\n        for (Object o1:o){\r\n            params.add(new Tuple<>(o1,o1.getClass()));\r\n        }\r\n        return params;\r\n    }\r\n\r\n\r\n\r\n\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/DAL/DalStock/DALDiscount.java b/src/DAL/DalStock/DALDiscount.java
+--- a/src/DAL/DalStock/DALDiscount.java	(revision 84313acb296291e294afd85ce4d0867591e18010)
++++ b/src/DAL/DalStock/DALDiscount.java	(date 1620669006170)
+@@ -23,14 +23,15 @@
+ 
+     public DALDiscount(DalController dc,int storeID,int discountID,int typeId,float percent,Date start,Date end) {
+         super(dc);
++        this.storeID=storeID;
+         _discountID=discountID;
++        this.typeId=typeId;
+         _percent=percent;
+         String pattern="dd-MM-yyyy";
+         DateFormat df=new SimpleDateFormat(pattern);
+         _start=df.format(start);
+         _end=df.format(end);
+-        this.storeID=storeID;
+-        this.typeId=typeId;
++
+     }
+ 
+     public DALDiscount(DalController dc) {
+@@ -86,8 +87,7 @@
+     @Override
+     public String getInsert() {
+         return """
+-                INSERT OR REPLACE INTO Discount VALUES (?,?,?,?,?,?,?,?);
+-                """;
++                INSERT OR REPLACE INTO Discount VALUES (?,?,?,?,?,?,?,?);""";
+     }
+ 
+     public int getID() {
+Index: logger.log
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/logger.log b/logger.log
+--- a/logger.log	(revision 84313acb296291e294afd85ce4d0867591e18010)
++++ b/logger.log	(date 1620669028410)
+@@ -37042,3 +37042,276 @@
+ [WARN ] 10-05-2021 19:38:35 [class: BusinessLayer.StockBusiness.StoreController,Line:525] - adding product in store controller.
+ [WARN ] 10-05-2021 19:38:35 [class: BusinessLayer.StockBusiness.StoreController,Line:527] - done adding product in store controller.
+ [WARN ] 10-05-2021 19:40:10 [class: BusinessLayer.StockBusiness.instance.InstanceController,Line:41] - can not remove the product
++[WARN ] 10-05-2021 20:25:36 [class: DAL.DalStock.DALStoreController,Line:166] - query: SELECT categoryID 
++FROM Category
++WHERE storeID=?; params: [1]
++[WARN ] 10-05-2021 20:25:36 [class: DAL.DalStock.DALStoreController,Line:173] - [1, 2]
++[WARN ] 10-05-2021 20:25:36 [class: DAL.DalStock.DALStoreController,Line:166] - query: SELECT typeID 
++FROM ProductType
++WHERE storeID=?; params: [1]
++[WARN ] 10-05-2021 20:25:36 [class: DAL.DalStock.DALStoreController,Line:173] - [1, 2]
++[WARN ] 10-05-2021 20:25:36 [class: BusinessLayer.StockBusiness.StoreController,Line:119] - [1, 2]
++[WARN ] 10-05-2021 20:25:36 [class: BusinessLayer.StockBusiness.Type.ProductType,Line:65] - loaded product types
++[WARN ] 10-05-2021 20:25:36 [class: BusinessLayer.StockBusiness.Type.ProductType,Line:73] - got sale discount
++[WARN ] 10-05-2021 20:25:36 [class: BusinessLayer.StockBusiness.Type.ProductType,Line:67] - loaded sale discounts
++[WARN ] 10-05-2021 20:25:36 [class: BusinessLayer.StockBusiness.Type.ProductType,Line:69] - loaded supplier discounts
++[WARN ] 10-05-2021 20:25:36 [class: Utility.Util,Line:26] - entry is already in DB, will not attempt insert.
++[WARN ] 10-05-2021 20:25:36 [class: BusinessLayer.StockBusiness.Type.ProductType,Line:65] - loaded product types
++[WARN ] 10-05-2021 20:25:36 [class: BusinessLayer.StockBusiness.Type.ProductType,Line:73] - got sale discount
++[WARN ] 10-05-2021 20:25:36 [class: BusinessLayer.StockBusiness.Type.ProductType,Line:67] - loaded sale discounts
++[WARN ] 10-05-2021 20:25:36 [class: BusinessLayer.StockBusiness.Type.ProductType,Line:69] - loaded supplier discounts
++[WARN ] 10-05-2021 20:25:36 [class: Utility.Util,Line:26] - entry is already in DB, will not attempt insert.
++[WARN ] 10-05-2021 20:25:36 [class: BusinessLayer.StockBusiness.StoreController,Line:123] - {BusinessLayer.StockBusiness.Type.ProductType@192b07fd=BusinessLayer.StockBusiness.instance.InstanceController@2038ae61, BusinessLayer.StockBusiness.Type.ProductType@64bfbc86=BusinessLayer.StockBusiness.instance.InstanceController@3c0f93f1}
++[WARN ] 10-05-2021 20:25:36 [class: DAL.DalStock.DALStoreController,Line:166] - query: SELECT shelfID 
++FROM Shelf
++WHERE storeID=?; params: [1]
++[WARN ] 10-05-2021 20:25:36 [class: DAL.DalStock.DALStoreController,Line:173] - [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20]
++[WARN ] 10-05-2021 20:25:36 [class: DAL.DalController,Line:118] - DalController from RS error due to: java.sql.SQLException: ResultSet closed
++[WARN ] 10-05-2021 20:25:36 [class: DAL.Mapper,Line:122] - mapper returned null on:class DAL.DalStock.DALStoreController
++[WARN ] 10-05-2021 20:25:36 [class: BusinessLayer.StockBusiness.StoreController,Line:88] - storeID is not in DB
++[WARN ] 10-05-2021 20:25:36 [class: BusinessLayer.StockBusiness.Fcade.StorageService,Line:421] - java.lang.IllegalArgumentException: storeID is not in DB
++[WARN ] 10-05-2021 20:25:59 [class: BusinessLayer.StockBusiness.StoreController,Line:704] - 2, 1, Shelves
++[WARN ] 10-05-2021 20:25:59 [class: BusinessLayer.StockBusiness.StoreController,Line:704] - 0, 2, Shelves
++[WARN ] 10-05-2021 20:25:59 [class: BusinessLayer.StockBusiness.StoreController,Line:704] - 0, 3, Shelves
++[WARN ] 10-05-2021 20:25:59 [class: BusinessLayer.StockBusiness.StoreController,Line:704] - 0, 4, Shelves
++[WARN ] 10-05-2021 20:25:59 [class: BusinessLayer.StockBusiness.StoreController,Line:704] - 0, 5, Shelves
++[WARN ] 10-05-2021 20:25:59 [class: BusinessLayer.StockBusiness.StoreController,Line:704] - 0, 6, Shelves
++[WARN ] 10-05-2021 20:25:59 [class: BusinessLayer.StockBusiness.StoreController,Line:704] - 0, 7, Shelves
++[WARN ] 10-05-2021 20:25:59 [class: BusinessLayer.StockBusiness.StoreController,Line:704] - 0, 8, Shelves
++[WARN ] 10-05-2021 20:25:59 [class: BusinessLayer.StockBusiness.StoreController,Line:704] - 0, 9, Shelves
++[WARN ] 10-05-2021 20:25:59 [class: BusinessLayer.StockBusiness.StoreController,Line:704] - 0, 10, Shelves
++[WARN ] 10-05-2021 20:25:59 [class: BusinessLayer.StockBusiness.StoreController,Line:704] - 1, 11, Storage
++[WARN ] 10-05-2021 20:25:59 [class: BusinessLayer.StockBusiness.StoreController,Line:518] - shelf: 1, 11, Storage
++[WARN ] 10-05-2021 20:25:59 [class: BusinessLayer.StockBusiness.StoreController,Line:519] - products=[]
++[WARN ] 10-05-2021 20:25:59 [class: BusinessLayer.StockBusiness.instance.InstanceController,Line:106] - adding product to dal from instanceController.
++[WARN ] 10-05-2021 20:25:59 [class: BusinessLayer.StockBusiness.instance.Product,Line:25] - AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
++[WARN ] 10-05-2021 20:25:59 [class: BusinessLayer.StockBusiness.instance.Product,Line:40] - starting 1st check DALProduct
++[WARN ] 10-05-2021 20:25:59 [class: BusinessLayer.StockBusiness.instance.Product,Line:42] - did 1st check DALProduct
++[WARN ] 10-05-2021 20:25:59 [class: BusinessLayer.StockBusiness.instance.Product,Line:44] - entry is already in DB, will not attempt insert.
++[WARN ] 10-05-2021 20:25:59 [class: BusinessLayer.StockBusiness.instance.InstanceController,Line:108] - done adding product to dal in instanceController.
++[WARN ] 10-05-2021 20:25:59 [class: BusinessLayer.StockBusiness.instance.InstanceController,Line:110] - done adding product to biz in instanceController.
++[WARN ] 10-05-2021 20:25:59 [class: BusinessLayer.StockBusiness.instance.InstanceController,Line:112] - done adding product to hash in instanceController.
++[WARN ] 10-05-2021 20:25:59 [class: BusinessLayer.StockBusiness.Type.ProductType,Line:341] - adding product to product type.
++[WARN ] 10-05-2021 20:25:59 [class: BusinessLayer.StockBusiness.Type.ProductType,Line:347] - adding storage to product type.
++[WARN ] 10-05-2021 20:25:59 [class: BusinessLayer.StockBusiness.Type.ProductType,Line:350] - done adding shelves/storage to product type.
++[WARN ] 10-05-2021 20:25:59 [class: BusinessLayer.StockBusiness.StoreController,Line:525] - adding product in store controller.
++[WARN ] 10-05-2021 20:25:59 [class: BusinessLayer.StockBusiness.StoreController,Line:527] - done adding product in store controller.
++[WARN ] 10-05-2021 20:26:10 [class: BusinessLayer.StockBusiness.StoreController,Line:704] - 2, 1, Shelves
++[WARN ] 10-05-2021 20:26:10 [class: BusinessLayer.StockBusiness.StoreController,Line:518] - shelf: 2, 1, Shelves
++[WARN ] 10-05-2021 20:26:10 [class: BusinessLayer.StockBusiness.StoreController,Line:519] - products=[]
++[WARN ] 10-05-2021 20:26:10 [class: BusinessLayer.StockBusiness.instance.InstanceController,Line:106] - adding product to dal from instanceController.
++[WARN ] 10-05-2021 20:26:10 [class: BusinessLayer.StockBusiness.instance.Product,Line:25] - AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
++[WARN ] 10-05-2021 20:26:10 [class: BusinessLayer.StockBusiness.instance.Product,Line:40] - starting 1st check DALProduct
++[WARN ] 10-05-2021 20:26:10 [class: BusinessLayer.StockBusiness.instance.Product,Line:42] - did 1st check DALProduct
++[WARN ] 10-05-2021 20:26:10 [class: BusinessLayer.StockBusiness.instance.Product,Line:44] - entry is already in DB, will not attempt insert.
++[WARN ] 10-05-2021 20:26:10 [class: BusinessLayer.StockBusiness.instance.InstanceController,Line:108] - done adding product to dal in instanceController.
++[WARN ] 10-05-2021 20:26:10 [class: BusinessLayer.StockBusiness.instance.InstanceController,Line:110] - done adding product to biz in instanceController.
++[WARN ] 10-05-2021 20:26:10 [class: BusinessLayer.StockBusiness.instance.InstanceController,Line:112] - done adding product to hash in instanceController.
++[WARN ] 10-05-2021 20:26:10 [class: BusinessLayer.StockBusiness.Type.ProductType,Line:341] - adding product to product type.
++[WARN ] 10-05-2021 20:26:10 [class: BusinessLayer.StockBusiness.Type.ProductType,Line:344] - adding shelves to product type.
++[WARN ] 10-05-2021 20:26:10 [class: BusinessLayer.StockBusiness.Type.ProductType,Line:350] - done adding shelves/storage to product type.
++[WARN ] 10-05-2021 20:26:10 [class: BusinessLayer.StockBusiness.StoreController,Line:525] - adding product in store controller.
++[WARN ] 10-05-2021 20:26:10 [class: BusinessLayer.StockBusiness.StoreController,Line:527] - done adding product in store controller.
++[WARN ] 10-05-2021 20:28:37 [class: DAL.DalStock.DALStoreController,Line:166] - query: SELECT categoryID 
++FROM Category
++WHERE storeID=?; params: [1]
++[WARN ] 10-05-2021 20:28:37 [class: DAL.DalStock.DALStoreController,Line:173] - [1, 2]
++[WARN ] 10-05-2021 20:28:37 [class: DAL.DalStock.DALStoreController,Line:166] - query: SELECT typeID 
++FROM ProductType
++WHERE storeID=?; params: [1]
++[WARN ] 10-05-2021 20:28:37 [class: DAL.DalStock.DALStoreController,Line:173] - [1, 2]
++[WARN ] 10-05-2021 20:28:37 [class: BusinessLayer.StockBusiness.StoreController,Line:119] - [1, 2]
++[WARN ] 10-05-2021 20:28:37 [class: BusinessLayer.StockBusiness.Type.ProductType,Line:65] - loaded product types
++[WARN ] 10-05-2021 20:28:37 [class: BusinessLayer.StockBusiness.Type.ProductType,Line:73] - got sale discount
++[WARN ] 10-05-2021 20:28:37 [class: BusinessLayer.StockBusiness.Type.ProductType,Line:67] - loaded sale discounts
++[WARN ] 10-05-2021 20:28:37 [class: BusinessLayer.StockBusiness.Type.ProductType,Line:69] - loaded supplier discounts
++[WARN ] 10-05-2021 20:28:37 [class: Utility.Util,Line:26] - entry is already in DB, will not attempt insert.
++[WARN ] 10-05-2021 20:28:37 [class: BusinessLayer.StockBusiness.Type.ProductType,Line:65] - loaded product types
++[WARN ] 10-05-2021 20:28:37 [class: BusinessLayer.StockBusiness.Type.ProductType,Line:73] - got sale discount
++[WARN ] 10-05-2021 20:28:37 [class: BusinessLayer.StockBusiness.Type.ProductType,Line:67] - loaded sale discounts
++[WARN ] 10-05-2021 20:28:37 [class: BusinessLayer.StockBusiness.Type.ProductType,Line:69] - loaded supplier discounts
++[WARN ] 10-05-2021 20:28:37 [class: Utility.Util,Line:26] - entry is already in DB, will not attempt insert.
++[WARN ] 10-05-2021 20:28:37 [class: BusinessLayer.StockBusiness.StoreController,Line:123] - {BusinessLayer.StockBusiness.Type.ProductType@192b07fd=BusinessLayer.StockBusiness.instance.InstanceController@2038ae61, BusinessLayer.StockBusiness.Type.ProductType@64bfbc86=BusinessLayer.StockBusiness.instance.InstanceController@3c0f93f1}
++[WARN ] 10-05-2021 20:28:37 [class: DAL.DalStock.DALStoreController,Line:166] - query: SELECT shelfID 
++FROM Shelf
++WHERE storeID=?; params: [1]
++[WARN ] 10-05-2021 20:28:37 [class: DAL.DalStock.DALStoreController,Line:173] - [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20]
++[WARN ] 10-05-2021 20:28:37 [class: DAL.DalController,Line:118] - DalController from RS error due to: java.sql.SQLException: ResultSet closed
++[WARN ] 10-05-2021 20:28:37 [class: DAL.Mapper,Line:122] - mapper returned null on:class DAL.DalStock.DALStoreController
++[WARN ] 10-05-2021 20:28:37 [class: BusinessLayer.StockBusiness.StoreController,Line:88] - storeID is not in DB
++[WARN ] 10-05-2021 20:28:37 [class: BusinessLayer.StockBusiness.Fcade.StorageService,Line:421] - java.lang.IllegalArgumentException: storeID is not in DB
++[WARN ] 10-05-2021 20:29:25 [class: BusinessLayer.StockBusiness.Type.Discount,Line:16] - the Date is illegal
++[WARN ] 10-05-2021 20:30:35 [class: DAL.DalStock.DALStoreController,Line:166] - query: SELECT categoryID 
++FROM Category
++WHERE storeID=?; params: [1]
++[WARN ] 10-05-2021 20:30:35 [class: DAL.DalStock.DALStoreController,Line:173] - [1, 2]
++[WARN ] 10-05-2021 20:30:35 [class: DAL.DalStock.DALStoreController,Line:166] - query: SELECT typeID 
++FROM ProductType
++WHERE storeID=?; params: [1]
++[WARN ] 10-05-2021 20:30:35 [class: DAL.DalStock.DALStoreController,Line:173] - [1, 2]
++[WARN ] 10-05-2021 20:30:35 [class: BusinessLayer.StockBusiness.StoreController,Line:119] - [1, 2]
++[WARN ] 10-05-2021 20:30:35 [class: BusinessLayer.StockBusiness.Type.ProductType,Line:65] - loaded product types
++[WARN ] 10-05-2021 20:30:35 [class: BusinessLayer.StockBusiness.Type.ProductType,Line:73] - got sale discount
++[WARN ] 10-05-2021 20:30:35 [class: BusinessLayer.StockBusiness.Type.ProductType,Line:67] - loaded sale discounts
++[WARN ] 10-05-2021 20:30:35 [class: BusinessLayer.StockBusiness.Type.ProductType,Line:69] - loaded supplier discounts
++[WARN ] 10-05-2021 20:30:35 [class: Utility.Util,Line:26] - entry is already in DB, will not attempt insert.
++[WARN ] 10-05-2021 20:30:35 [class: BusinessLayer.StockBusiness.Type.ProductType,Line:65] - loaded product types
++[WARN ] 10-05-2021 20:30:35 [class: BusinessLayer.StockBusiness.Type.ProductType,Line:73] - got sale discount
++[WARN ] 10-05-2021 20:30:35 [class: BusinessLayer.StockBusiness.Type.ProductType,Line:67] - loaded sale discounts
++[WARN ] 10-05-2021 20:30:35 [class: BusinessLayer.StockBusiness.Type.ProductType,Line:69] - loaded supplier discounts
++[WARN ] 10-05-2021 20:30:35 [class: Utility.Util,Line:26] - entry is already in DB, will not attempt insert.
++[WARN ] 10-05-2021 20:30:35 [class: BusinessLayer.StockBusiness.StoreController,Line:123] - {BusinessLayer.StockBusiness.Type.ProductType@6d7b4f4c=BusinessLayer.StockBusiness.instance.InstanceController@3e9b1010, BusinessLayer.StockBusiness.Type.ProductType@4e9ba398=BusinessLayer.StockBusiness.instance.InstanceController@6c3708b3}
++[WARN ] 10-05-2021 20:30:35 [class: DAL.DalStock.DALStoreController,Line:166] - query: SELECT shelfID 
++FROM Shelf
++WHERE storeID=?; params: [1]
++[WARN ] 10-05-2021 20:30:35 [class: DAL.DalStock.DALStoreController,Line:173] - [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20]
++[WARN ] 10-05-2021 20:30:35 [class: DAL.DalController,Line:118] - DalController from RS error due to: java.sql.SQLException: ResultSet closed
++[WARN ] 10-05-2021 20:30:35 [class: DAL.Mapper,Line:122] - mapper returned null on:class DAL.DalStock.DALStoreController
++[WARN ] 10-05-2021 20:30:35 [class: BusinessLayer.StockBusiness.StoreController,Line:88] - storeID is not in DB
++[WARN ] 10-05-2021 20:30:35 [class: BusinessLayer.StockBusiness.Fcade.StorageService,Line:421] - java.lang.IllegalArgumentException: storeID is not in DB
++[WARN ] 10-05-2021 20:31:37 [class: DAL.DalController,Line:118] - DalController from RS error due to: java.sql.SQLException: ResultSet closed
++[WARN ] 10-05-2021 20:31:37 [class: DAL.Mapper,Line:122] - mapper returned null on:class DAL.DalStock.DALSaleDiscount
++[WARN ] 10-05-2021 20:31:37 [class: DAL.Mapper,Line:160] - java.lang.Exception: non create multi-query
++[WARN ] 10-05-2021 20:31:37 [class: DAL.DalController,Line:118] - DalController from RS error due to: java.sql.SQLException: ResultSet closed
++[WARN ] 10-05-2021 20:31:37 [class: DAL.Mapper,Line:122] - mapper returned null on:class DAL.DalStock.DALSaleDiscount
++[WARN ] 10-05-2021 20:31:37 [class: Utility.Util,Line:34] - the instance that return from Mapper is null for: class DAL.DalStock.DALSaleDiscount
++[WARN ] 10-05-2021 20:33:21 [class: DAL.DalStock.DALStoreController,Line:166] - query: SELECT categoryID 
++FROM Category
++WHERE storeID=?; params: [1]
++[WARN ] 10-05-2021 20:33:21 [class: DAL.DalStock.DALStoreController,Line:173] - [1, 2]
++[WARN ] 10-05-2021 20:33:21 [class: DAL.DalStock.DALStoreController,Line:166] - query: SELECT typeID 
++FROM ProductType
++WHERE storeID=?; params: [1]
++[WARN ] 10-05-2021 20:33:21 [class: DAL.DalStock.DALStoreController,Line:173] - [1, 2]
++[WARN ] 10-05-2021 20:33:21 [class: BusinessLayer.StockBusiness.StoreController,Line:119] - [1, 2]
++[WARN ] 10-05-2021 20:33:21 [class: BusinessLayer.StockBusiness.Type.ProductType,Line:65] - loaded product types
++[WARN ] 10-05-2021 20:33:21 [class: BusinessLayer.StockBusiness.Type.ProductType,Line:73] - got sale discount
++[WARN ] 10-05-2021 20:33:21 [class: BusinessLayer.StockBusiness.Type.ProductType,Line:67] - loaded sale discounts
++[WARN ] 10-05-2021 20:33:21 [class: BusinessLayer.StockBusiness.Type.ProductType,Line:69] - loaded supplier discounts
++[WARN ] 10-05-2021 20:33:21 [class: Utility.Util,Line:26] - entry is already in DB, will not attempt insert.
++[WARN ] 10-05-2021 20:33:21 [class: BusinessLayer.StockBusiness.Type.ProductType,Line:65] - loaded product types
++[WARN ] 10-05-2021 20:33:21 [class: BusinessLayer.StockBusiness.Type.ProductType,Line:73] - got sale discount
++[WARN ] 10-05-2021 20:33:21 [class: BusinessLayer.StockBusiness.Type.ProductType,Line:67] - loaded sale discounts
++[WARN ] 10-05-2021 20:33:21 [class: BusinessLayer.StockBusiness.Type.ProductType,Line:69] - loaded supplier discounts
++[WARN ] 10-05-2021 20:33:21 [class: Utility.Util,Line:26] - entry is already in DB, will not attempt insert.
++[WARN ] 10-05-2021 20:33:21 [class: BusinessLayer.StockBusiness.StoreController,Line:123] - {BusinessLayer.StockBusiness.Type.ProductType@6d7b4f4c=BusinessLayer.StockBusiness.instance.InstanceController@3e9b1010, BusinessLayer.StockBusiness.Type.ProductType@4e9ba398=BusinessLayer.StockBusiness.instance.InstanceController@6c3708b3}
++[WARN ] 10-05-2021 20:33:21 [class: DAL.DalStock.DALStoreController,Line:166] - query: SELECT shelfID 
++FROM Shelf
++WHERE storeID=?; params: [1]
++[WARN ] 10-05-2021 20:33:21 [class: DAL.DalStock.DALStoreController,Line:173] - [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20]
++[WARN ] 10-05-2021 20:33:21 [class: DAL.DalController,Line:118] - DalController from RS error due to: java.sql.SQLException: ResultSet closed
++[WARN ] 10-05-2021 20:33:21 [class: DAL.Mapper,Line:122] - mapper returned null on:class DAL.DalStock.DALStoreController
++[WARN ] 10-05-2021 20:33:21 [class: BusinessLayer.StockBusiness.StoreController,Line:88] - storeID is not in DB
++[WARN ] 10-05-2021 20:33:21 [class: BusinessLayer.StockBusiness.Fcade.StorageService,Line:421] - java.lang.IllegalArgumentException: storeID is not in DB
++[WARN ] 10-05-2021 20:34:30 [class: DAL.DalController,Line:118] - DalController from RS error due to: java.sql.SQLException: ResultSet closed
++[WARN ] 10-05-2021 20:34:30 [class: DAL.Mapper,Line:122] - mapper returned null on:class DAL.DalStock.DALSaleDiscount
++[WARN ] 10-05-2021 20:34:34 [class: DAL.Mapper,Line:160] - java.lang.Exception: non create multi-query
++[WARN ] 10-05-2021 20:35:21 [class: DAL.DalController,Line:118] - DalController from RS error due to: java.sql.SQLException: ResultSet closed
++[WARN ] 10-05-2021 20:35:21 [class: DAL.Mapper,Line:122] - mapper returned null on:class DAL.DalStock.DALSaleDiscount
++[WARN ] 10-05-2021 20:35:25 [class: Utility.Util,Line:34] - the instance that return from Mapper is null for: class DAL.DalStock.DALSaleDiscount
++[WARN ] 10-05-2021 20:37:11 [class: DAL.DalStock.DALStoreController,Line:166] - query: SELECT categoryID 
++FROM Category
++WHERE storeID=?; params: [1]
++[WARN ] 10-05-2021 20:37:11 [class: DAL.DalStock.DALStoreController,Line:173] - [1, 2]
++[WARN ] 10-05-2021 20:37:12 [class: DAL.DalStock.DALStoreController,Line:166] - query: SELECT typeID 
++FROM ProductType
++WHERE storeID=?; params: [1]
++[WARN ] 10-05-2021 20:37:12 [class: DAL.DalStock.DALStoreController,Line:173] - [1, 2]
++[WARN ] 10-05-2021 20:37:12 [class: BusinessLayer.StockBusiness.StoreController,Line:119] - [1, 2]
++[WARN ] 10-05-2021 20:37:12 [class: BusinessLayer.StockBusiness.Type.ProductType,Line:65] - loaded product types
++[WARN ] 10-05-2021 20:37:12 [class: BusinessLayer.StockBusiness.Type.ProductType,Line:73] - got sale discount
++[WARN ] 10-05-2021 20:37:12 [class: BusinessLayer.StockBusiness.Type.ProductType,Line:67] - loaded sale discounts
++[WARN ] 10-05-2021 20:37:12 [class: BusinessLayer.StockBusiness.Type.ProductType,Line:69] - loaded supplier discounts
++[WARN ] 10-05-2021 20:37:12 [class: Utility.Util,Line:26] - entry is already in DB, will not attempt insert.
++[WARN ] 10-05-2021 20:37:12 [class: BusinessLayer.StockBusiness.Type.ProductType,Line:65] - loaded product types
++[WARN ] 10-05-2021 20:37:12 [class: BusinessLayer.StockBusiness.Type.ProductType,Line:73] - got sale discount
++[WARN ] 10-05-2021 20:37:12 [class: BusinessLayer.StockBusiness.Type.ProductType,Line:67] - loaded sale discounts
++[WARN ] 10-05-2021 20:37:12 [class: BusinessLayer.StockBusiness.Type.ProductType,Line:69] - loaded supplier discounts
++[WARN ] 10-05-2021 20:37:12 [class: Utility.Util,Line:26] - entry is already in DB, will not attempt insert.
++[WARN ] 10-05-2021 20:37:12 [class: BusinessLayer.StockBusiness.StoreController,Line:123] - {BusinessLayer.StockBusiness.Type.ProductType@63753b6d=BusinessLayer.StockBusiness.instance.InstanceController@210366b4, BusinessLayer.StockBusiness.Type.ProductType@5f9d02cb=BusinessLayer.StockBusiness.instance.InstanceController@eec5a4a}
++[WARN ] 10-05-2021 20:37:12 [class: DAL.DalStock.DALStoreController,Line:166] - query: SELECT shelfID 
++FROM Shelf
++WHERE storeID=?; params: [1]
++[WARN ] 10-05-2021 20:37:12 [class: DAL.DalStock.DALStoreController,Line:173] - [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20]
++[WARN ] 10-05-2021 20:37:12 [class: DAL.DalController,Line:118] - DalController from RS error due to: java.sql.SQLException: ResultSet closed
++[WARN ] 10-05-2021 20:37:12 [class: DAL.Mapper,Line:122] - mapper returned null on:class DAL.DalStock.DALStoreController
++[WARN ] 10-05-2021 20:37:12 [class: BusinessLayer.StockBusiness.StoreController,Line:88] - storeID is not in DB
++[WARN ] 10-05-2021 20:37:12 [class: BusinessLayer.StockBusiness.Fcade.StorageService,Line:421] - java.lang.IllegalArgumentException: storeID is not in DB
++[WARN ] 10-05-2021 20:37:41 [class: DAL.DalController,Line:118] - DalController from RS error due to: java.sql.SQLException: ResultSet closed
++[WARN ] 10-05-2021 20:37:41 [class: DAL.Mapper,Line:122] - mapper returned null on:class DAL.DalStock.DALSaleDiscount
++[WARN ] 10-05-2021 20:39:05 [class: DAL.Mapper,Line:160] - java.lang.Exception: non create multi-query
++[WARN ] 10-05-2021 20:39:05 [class: DAL.DalController,Line:118] - DalController from RS error due to: java.sql.SQLException: ResultSet closed
++[WARN ] 10-05-2021 20:39:05 [class: DAL.Mapper,Line:122] - mapper returned null on:class DAL.DalStock.DALSaleDiscount
++[WARN ] 10-05-2021 20:39:05 [class: Utility.Util,Line:34] - the instance that return from Mapper is null for: class DAL.DalStock.DALSaleDiscount
++[WARN ] 10-05-2021 20:39:17 [class: DAL.DalStock.DALStoreController,Line:166] - query: SELECT categoryID 
++FROM Category
++WHERE storeID=?; params: [1]
++[WARN ] 10-05-2021 20:39:17 [class: DAL.DalStock.DALStoreController,Line:173] - [1, 2]
++[WARN ] 10-05-2021 20:39:17 [class: DAL.DalStock.DALStoreController,Line:166] - query: SELECT typeID 
++FROM ProductType
++WHERE storeID=?; params: [1]
++[WARN ] 10-05-2021 20:39:17 [class: DAL.DalStock.DALStoreController,Line:173] - [1, 2]
++[WARN ] 10-05-2021 20:39:17 [class: BusinessLayer.StockBusiness.StoreController,Line:119] - [1, 2]
++[WARN ] 10-05-2021 20:39:17 [class: BusinessLayer.StockBusiness.Type.ProductType,Line:65] - loaded product types
++[WARN ] 10-05-2021 20:39:17 [class: BusinessLayer.StockBusiness.Type.ProductType,Line:73] - got sale discount
++[WARN ] 10-05-2021 20:39:17 [class: BusinessLayer.StockBusiness.Type.ProductType,Line:67] - loaded sale discounts
++[WARN ] 10-05-2021 20:39:17 [class: BusinessLayer.StockBusiness.Type.ProductType,Line:69] - loaded supplier discounts
++[WARN ] 10-05-2021 20:39:17 [class: Utility.Util,Line:26] - entry is already in DB, will not attempt insert.
++[WARN ] 10-05-2021 20:39:17 [class: BusinessLayer.StockBusiness.Type.ProductType,Line:65] - loaded product types
++[WARN ] 10-05-2021 20:39:17 [class: BusinessLayer.StockBusiness.Type.ProductType,Line:73] - got sale discount
++[WARN ] 10-05-2021 20:39:17 [class: BusinessLayer.StockBusiness.Type.ProductType,Line:67] - loaded sale discounts
++[WARN ] 10-05-2021 20:39:17 [class: BusinessLayer.StockBusiness.Type.ProductType,Line:69] - loaded supplier discounts
++[WARN ] 10-05-2021 20:39:17 [class: Utility.Util,Line:26] - entry is already in DB, will not attempt insert.
++[WARN ] 10-05-2021 20:39:17 [class: BusinessLayer.StockBusiness.StoreController,Line:123] - {BusinessLayer.StockBusiness.Type.ProductType@63753b6d=BusinessLayer.StockBusiness.instance.InstanceController@210366b4, BusinessLayer.StockBusiness.Type.ProductType@5f9d02cb=BusinessLayer.StockBusiness.instance.InstanceController@eec5a4a}
++[WARN ] 10-05-2021 20:39:17 [class: DAL.DalStock.DALStoreController,Line:166] - query: SELECT shelfID 
++FROM Shelf
++WHERE storeID=?; params: [1]
++[WARN ] 10-05-2021 20:39:17 [class: DAL.DalStock.DALStoreController,Line:173] - [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20]
++[WARN ] 10-05-2021 20:39:17 [class: DAL.DalController,Line:118] - DalController from RS error due to: java.sql.SQLException: ResultSet closed
++[WARN ] 10-05-2021 20:39:17 [class: DAL.Mapper,Line:122] - mapper returned null on:class DAL.DalStock.DALStoreController
++[WARN ] 10-05-2021 20:39:17 [class: BusinessLayer.StockBusiness.StoreController,Line:88] - storeID is not in DB
++[WARN ] 10-05-2021 20:39:17 [class: BusinessLayer.StockBusiness.Fcade.StorageService,Line:421] - java.lang.IllegalArgumentException: storeID is not in DB
++[WARN ] 10-05-2021 20:39:38 [class: DAL.DalController,Line:118] - DalController from RS error due to: java.sql.SQLException: ResultSet closed
++[WARN ] 10-05-2021 20:39:38 [class: DAL.Mapper,Line:122] - mapper returned null on:class DAL.DalStock.DALSaleDiscount
++[WARN ] 10-05-2021 20:39:47 [class: DAL.DalController,Line:70] - noSelect query: INSERT OR REPLACE INTO Discount VALUES (?,?,?,?,?,?,?,?) params: [Tuple{item1=1, item2=class java.lang.Integer}, Tuple{item1=1, item2=class java.lang.Integer}, Tuple{item1=5.0, item2=class java.lang.Double}, Tuple{item1=Sat Jan 01 00:00:00 IST 2022, item2=class java.util.Date}, Tuple{item1=Wed Feb 02 00:00:00 IST 2022, item2=class java.util.Date}]
++failed due to illegal type
++[WARN ] 10-05-2021 20:40:16 [class: DAL.Mapper,Line:160] - java.lang.Exception: illegal type
++[WARN ] 10-05-2021 20:40:18 [class: DAL.DalController,Line:118] - DalController from RS error due to: java.sql.SQLException: ResultSet closed
++[WARN ] 10-05-2021 20:40:18 [class: DAL.Mapper,Line:122] - mapper returned null on:class DAL.DalStock.DALSaleDiscount
++[WARN ] 10-05-2021 20:40:18 [class: Utility.Util,Line:34] - the instance that return from Mapper is null for: class DAL.DalStock.DALSaleDiscount
++[WARN ] 10-05-2021 20:43:28 [class: DAL.DalStock.DALStoreController,Line:166] - query: SELECT categoryID 
++FROM Category
++WHERE storeID=?; params: [1]
++[WARN ] 10-05-2021 20:43:28 [class: DAL.DalStock.DALStoreController,Line:173] - [1, 2]
++[WARN ] 10-05-2021 20:43:28 [class: DAL.DalStock.DALStoreController,Line:166] - query: SELECT typeID 
++FROM ProductType
++WHERE storeID=?; params: [1]
++[WARN ] 10-05-2021 20:43:28 [class: DAL.DalStock.DALStoreController,Line:173] - [1, 2]
++[WARN ] 10-05-2021 20:43:28 [class: BusinessLayer.StockBusiness.StoreController,Line:119] - [1, 2]
++[WARN ] 10-05-2021 20:43:29 [class: BusinessLayer.StockBusiness.Type.ProductType,Line:65] - loaded product types
++[WARN ] 10-05-2021 20:43:29 [class: BusinessLayer.StockBusiness.Type.ProductType,Line:73] - got sale discount
++[WARN ] 10-05-2021 20:43:29 [class: BusinessLayer.StockBusiness.Type.ProductType,Line:67] - loaded sale discounts
++[WARN ] 10-05-2021 20:43:29 [class: BusinessLayer.StockBusiness.Type.ProductType,Line:69] - loaded supplier discounts
++[WARN ] 10-05-2021 20:43:29 [class: Utility.Util,Line:26] - entry is already in DB, will not attempt insert.
++[WARN ] 10-05-2021 20:43:29 [class: BusinessLayer.StockBusiness.Type.ProductType,Line:65] - loaded product types
++[WARN ] 10-05-2021 20:43:29 [class: BusinessLayer.StockBusiness.Type.ProductType,Line:73] - got sale discount
++[WARN ] 10-05-2021 20:43:29 [class: BusinessLayer.StockBusiness.Type.ProductType,Line:67] - loaded sale discounts
++[WARN ] 10-05-2021 20:43:29 [class: BusinessLayer.StockBusiness.Type.ProductType,Line:69] - loaded supplier discounts
++[WARN ] 10-05-2021 20:43:29 [class: Utility.Util,Line:26] - entry is already in DB, will not attempt insert.
++[WARN ] 10-05-2021 20:43:29 [class: BusinessLayer.StockBusiness.StoreController,Line:123] - {BusinessLayer.StockBusiness.Type.ProductType@63753b6d=BusinessLayer.StockBusiness.instance.InstanceController@210366b4, BusinessLayer.StockBusiness.Type.ProductType@5f9d02cb=BusinessLayer.StockBusiness.instance.InstanceController@eec5a4a}
++[WARN ] 10-05-2021 20:43:29 [class: DAL.DalStock.DALStoreController,Line:166] - query: SELECT shelfID 
++FROM Shelf
++WHERE storeID=?; params: [1]
++[WARN ] 10-05-2021 20:43:29 [class: DAL.DalStock.DALStoreController,Line:173] - [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20]
++[WARN ] 10-05-2021 20:43:29 [class: DAL.DalController,Line:118] - DalController from RS error due to: java.sql.SQLException: ResultSet closed
++[WARN ] 10-05-2021 20:43:29 [class: DAL.Mapper,Line:122] - mapper returned null on:class DAL.DalStock.DALStoreController
++[WARN ] 10-05-2021 20:43:29 [class: BusinessLayer.StockBusiness.StoreController,Line:88] - storeID is not in DB
++[WARN ] 10-05-2021 20:43:29 [class: BusinessLayer.StockBusiness.Fcade.StorageService,Line:421] - java.lang.IllegalArgumentException: storeID is not in DB
++[WARN ] 10-05-2021 20:50:28 [class: DAL.DalController,Line:118] - DalController from RS error due to: java.sql.SQLException: ResultSet closed
++[WARN ] 10-05-2021 20:50:28 [class: DAL.Mapper,Line:122] - mapper returned null on:class DAL.DalStock.DALSaleDiscount
++[WARN ] 10-05-2021 20:50:28 [class: DAL.DalController,Line:70] - noSelect query: INSERT OR REPLACE INTO Discount VALUES (?,?,?,?,?,?,?,?) params: [Tuple{item1=1, item2=class java.lang.Integer}, Tuple{item1=1, item2=class java.lang.Integer}, Tuple{item1=5.0, item2=class java.lang.Double}, Tuple{item1=Sat Jan 01 00:00:00 IST 2022, item2=class java.util.Date}, Tuple{item1=Wed Feb 02 00:00:00 IST 2022, item2=class java.util.Date}]
++failed due to illegal type
++[WARN ] 10-05-2021 20:50:28 [class: DAL.Mapper,Line:160] - java.lang.Exception: illegal type
++[WARN ] 10-05-2021 20:50:28 [class: DAL.DalController,Line:118] - DalController from RS error due to: java.sql.SQLException: ResultSet closed
++[WARN ] 10-05-2021 20:50:28 [class: DAL.Mapper,Line:122] - mapper returned null on:class DAL.DalStock.DALSaleDiscount
++[WARN ] 10-05-2021 20:50:28 [class: Utility.Util,Line:34] - the instance that return from Mapper is null for: class DAL.DalStock.DALSaleDiscount
+Index: src/BusinessLayer/StockBusiness/Type/SaleDiscount.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package BusinessLayer.StockBusiness.Type;\r\n\r\nimport DAL.DalStock.DALSaleDiscount;\r\nimport DAL.Mapper;\r\nimport Utility.Util;\r\n\r\nimport java.util.ArrayList;\r\nimport java.util.Date;\r\nimport java.util.List;\r\n\r\npublic class SaleDiscount extends Discount{\r\n    DALSaleDiscount dal;\r\n\r\n    public SaleDiscount(int storeID,int _discountID, double _percent, Date _start, Date _end) {\r\n        super(storeID,_discountID, _percent, _start, _end);\r\n    }\r\n\r\n    public SaleDiscount(int id, Integer i) {\r\n        List<Integer> list=new ArrayList<>();\r\n        list.add(id);\r\n        list.add(i);\r\n        list.add(-1);\r\n        dal=(DALSaleDiscount) Mapper.getMap().getItem(DALSaleDiscount.class,list);\r\n    }\r\n\r\n    @Override\r\n    protected void init(int storeID, int id, double percent, Date start, Date end) {\r\n        dal=Util.initDal(DALSaleDiscount.class,storeID,id,percent,start,end);\r\n    }\r\n\r\n    @Override\r\n    public int get_discountID() {\r\n        return dal.getID();\r\n    }\r\n\r\n    @Override\r\n    public float get_percent() {\r\n        return dal.getPercent();\r\n    }\r\n\r\n    @Override\r\n    public Date get_start() {\r\n        return dal.getStartDate();\r\n    }\r\n\r\n    @Override\r\n    public Date get_end() {\r\n        return dal.getEndDate();\r\n    }\r\n\r\n    @Override\r\n    public void addTo(ProductType productType) {\r\n        log.info(\"addTo(ProductType productType)\");\r\n        productType.addDiscount(this);\r\n    }\r\n\r\n    @Override\r\n    public void removeFrom(ProductType productType) {\r\n        productType.removeDiscount(this);\r\n    }\r\n\r\n\r\n\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/BusinessLayer/StockBusiness/Type/SaleDiscount.java b/src/BusinessLayer/StockBusiness/Type/SaleDiscount.java
+--- a/src/BusinessLayer/StockBusiness/Type/SaleDiscount.java	(revision 84313acb296291e294afd85ce4d0867591e18010)
++++ b/src/BusinessLayer/StockBusiness/Type/SaleDiscount.java	(date 1620668744037)
+@@ -1,7 +1,9 @@
+ package BusinessLayer.StockBusiness.Type;
+ 
++import DAL.DALObject;
+ import DAL.DalStock.DALSaleDiscount;
+ import DAL.Mapper;
++import Utility.Tuple;
+ import Utility.Util;
+ 
+ import java.util.ArrayList;
+@@ -25,7 +27,29 @@
+ 
+     @Override
+     protected void init(int storeID, int id, double percent, Date start, Date end) {
+-        dal=Util.initDal(DALSaleDiscount.class,storeID,id,percent,start,end);
++        //dal=Util.initDal(DALSaleDiscount.class,storeID,id,percent,start,end);
++        List<Tuple<Object,Class>> list=new ArrayList<>();
++        list.add(new Tuple<>(storeID,Integer.class));
++        list.add(new Tuple<>(key,Integer.class));
++        for (Object o1: o) {
++            list.add(new Tuple<>(o1,o1.getClass()));
++        }
++        List<Integer> keyList=new ArrayList<>();
++        keyList.add(storeID);
++        keyList.add(key);
++        Mapper map=Mapper.getMap();
++        map.setItem(c,list);
++
++        check =map.getItem(c ,keyList);
++        if (c==null || check==null ||(check.getClass()!=c)){
++            String s="the instance that return from Mapper is null for: "+c;
++            log.warn(s);
++            throw new IllegalArgumentException(s);
++
++        }
++        else{
++            log.info("create new Object");
++        }
+     }
+ 
+     @Override

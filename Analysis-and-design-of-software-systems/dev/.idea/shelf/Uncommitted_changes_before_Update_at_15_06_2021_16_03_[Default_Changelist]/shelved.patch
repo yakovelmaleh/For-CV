@@ -1,0 +1,15 @@
+Index: logger.log
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/logger.log b/logger.log
+--- a/logger.log	(revision 1373c7162fb5b641ee167fc36973bf6c286a772e)
++++ b/logger.log	(date 1623762219847)
+@@ -10475,3 +10475,6 @@
+ [WARN ] 15-06-2021 15:57:29 [class: DataAccess.DalController,Line:79] - Select query: SELECT price FROM Items
+ WHERE itemId = ?; params: [4]
+ failed due to 
++[DEBUG] 15-06-2021 16:03:39 [class: Business.StockBusiness.StoreController,Line:156] - got inside getID Method
++[DEBUG] 15-06-2021 16:03:39 [class: Business.StockBusiness.StoreController,Line:156] - got inside getID Method
++[DEBUG] 15-06-2021 16:03:39 [class: Business.StockBusiness.StoreController,Line:156] - got inside getID Method
